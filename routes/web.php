@@ -58,6 +58,7 @@ Route::group(['middleware'=>[
     Route::get('/registrar/request/graduate/details/{id}', [RegistrarPage::class, 'graduatedDetails'])->name('registrar-graduatedDetails');
     // Route::get('/registrar/request/other-settings', [RegistrarPage::class, 'payment'])->name('registrar-payment.info');
      Route::get('/registrar/view/request/{id}', [RegistrarPage::class, 'viewRequest'])->name('registrar-view.request');
+     Route::get('/registrar/view/requestor/{id}', [RegistrarPage::class, 'viewrequestor'])->name('registrar-view.requestor');
 });
 
 Route::group(['middleware'=>[

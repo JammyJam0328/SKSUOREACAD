@@ -1,4 +1,4 @@
-<div class="flex gap-4">
+<div class="px-11">
     <div class="w-full">
         <div class="max-w-6xl mx-auto  mb-5">
             <div class="mb-3">
@@ -21,19 +21,18 @@
                         <div class="mt-1 absolute z-10">
                             <ul class="divide-y divide-gray-200 bg-white rounded shadow-lg">
                                 @foreach ($requestors as $requestor)
-                                    <li class="p-2 flex hover:shadow-md">
-                                        @if ($requestor->user->profile_photo_path)
+                                    <a href="{{ route('registrar-view.requestor', ['id' => $requestor->id]) }}">
+                                        <li class="p-2 flex hover:shadow-md">
                                             <img class="h-10 w-10 rounded-full"
-                                                src="/storage/{{ $requestor->user->profile_photo_path }}" alt="">
-                                        @else
-                                            <i class="fa fa-user h-10 w-10 rounded-full"></i>
-                                        @endif
-                                        <div class="ml-3">
-                                            <p class="text-sm font-medium text-gray-900">{{ $requestor->lastname }},
-                                                {{ $requestor->firstname }} {{ $requestor->middlename }}</p>
-                                            <p class="text-sm text-gray-500">{{ $requestor->course->name }}</p>
-                                        </div>
-                                    </li>
+                                                src="{{ $requestor->user->profile_photo_url }}" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-sm font-medium text-gray-900">
+                                                    {{ $requestor->lastname }},
+                                                    {{ $requestor->firstname }} {{ $requestor->middlename }}</p>
+                                                <p class="text-sm text-gray-500">{{ $requestor->course->name }}</p>
+                                            </div>
+                                        </li>
+                                    </a>
                                 @endforeach
 
                             </ul>
@@ -273,7 +272,7 @@
             </div>
         </div>
     </div>
-    <div class="w-1/3">
+    {{-- <div class="w-1/3">
         <div class="bg-white rounded shadow border-t-4 border-green-600 pt-1">
             <div class="text-center">
                 <span>TODO</span>
@@ -294,7 +293,7 @@
             </form>
 
         </div>
-    </div>
+    </div> --}}
 
 
 

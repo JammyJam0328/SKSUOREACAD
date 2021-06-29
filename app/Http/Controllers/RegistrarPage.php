@@ -63,6 +63,12 @@ class RegistrarPage extends Controller
         ]);
     }
 
+    public function viewrequestor($id)
+    {
+        return view('pages.registrar.view-requestor',[
+            'id'=>$id
+        ]);
+    }
     // public function payment()
     // {
     //     return view('pages.registrar.payment-info');
