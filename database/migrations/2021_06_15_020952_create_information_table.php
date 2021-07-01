@@ -16,7 +16,7 @@ class CreateInformationTable extends Migration
         Schema::create('information', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('studentnumber');
+            $table->string('studentnumber')->nullable();
             $table->string('firstname');
             $table->string('middlename')->nullable();
             $table->string('lastname');
