@@ -19,13 +19,13 @@ class PurposeSeeder extends Seeder
                 'description'=>'For Licensure examination',
             ],
             [
-                'description'=>'For Transefer/evaluation',
+                'description'=>'For Transfer/evaluation',
             ],
             [
                 'description'=>'For Enrollment',
             ],
             [
-                'description'=>'For Employment/reference',
+                'description'=>'For Employment',
             ],
             [
                 'description'=>'Others',
