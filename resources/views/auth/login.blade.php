@@ -94,7 +94,7 @@
                                 <h1
                                     class="text-4xl tracking-tight font-extrabold text-white  sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
                                     <span class="md:block font-serif font-bold">SKSU OREACAD </span>
-                                    <span class="text-green-900">ONLINE REQUEST FOR ACADEMIC RECORDS</span>
+                                    <span class="text-green-900">ONLINE REQUEST OF ACADEMIC RECORDS</span>
                                 </h1>
 
 
