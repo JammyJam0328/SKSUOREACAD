@@ -50,7 +50,7 @@
 <x-guest-layout>
 
 
-    <div x-data={menu:false} class="relative bg-gradient-to-r from-green-300 to-green-600 overflow-hidden">
+    <div x-data={menu:false} class="relative bg-gradient-to-r from-green-100 to-green-600 overflow-auto h-screen">
         <div class="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
             <svg class="absolute bottom-0 right-0 transform translate-x-1/2 mb-48 text-gray-700 lg:top-0 lg:mt-28 lg:mb-0 xl:transform-none xl:translate-x-0"
                 width="364" height="384" viewBox="0 0 364 384" fill="none">
@@ -63,51 +63,51 @@
                 <rect width="364" height="384" fill="url(#eab71dd9-9d7a-47bd-8044-256344ee00d0)" />
             </svg>
         </div>
-        <div class="relative pt-6 pb-16 sm:pb-24">
+        <div class="relative md:pt-6 pb-16 sm:pb-24">
             <div>
-                <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
+                <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px- h-14"
                     aria-label="Global">
-                    <div class="flex items-center flex-1">
-                        <div class="flex items-center justify-between w-full md:w-auto">
-                            <a href="#">
-                                <img class="h-8 w-auto sm:h-10"
-                                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="">
-                            </a>
 
-                        </div>
-                    </div>
-                    <div class="hidden md:flex">
 
-                    </div>
                 </nav>
 
 
             </div>
 
-            <main class="mt-16 sm:mt-24">
-                <div class="mx-10 max-w-7xl">
+            <main class=" sm:mt-10">
+                <div class="md:mx-12 max-w-7xl">
                     <div class="lg:grid lg:grid-cols-12 lg:gap-5">
                         <div
-                            class="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
+                            class="hidden md:block px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
                             <div>
+                                <div class="pb-3 grid items-center justify-center">
+                                    <div class="flex justify-center py-1">
+                                        <img src="{{ asset('images/sksu1.png') }}" class="h-14 w-auto" alt="">
+                                    </div>
 
-                                <h1
-                                    class="text-4xl tracking-tight font-extrabold text-white  sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
-                                    <span class="md:block font-serif font-bold">SKSU OREACAD </span>
-                                    <span class="text-green-900">ONLINE REQUEST OF ACADEMIC RECORDS</span>
-                                </h1>
+
+                                    <h1 class="text-3xl font-bold text-green-900">SULTAN KUDARAT STATE UNIVERSITY
+                                    </h1>
+
+
+                                </div>
+                                <div>
+                                    <img src="{{ asset('images/OREACADLogo1.png') }}" alt="">
+                                </div>
+
 
 
                             </div>
                         </div>
-                        <div class="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
+                        <div class=" sm:mt-24 lg:mt-0 lg:col-span-6">
+
+
                             <div class="bg-white py-16 px-8 shadow sm:rounded-lg  ">
                                 <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                                    <img class="mx-auto h-12 w-auto"
-                                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                                        alt="Workflow">
-                                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                                        Sign in to your account
+                                    <img class="mx-auto h-14 w-auto" src="{{ asset('images/OREACADLogo.svg') }}"
+                                        alt="OREACAD LOGO">
+                                    <h2 class="mt-6 text-center text-3xl font-extrabold text-green-900">
+                                        SIGN IN
                                     </h2>
 
                                 </div>

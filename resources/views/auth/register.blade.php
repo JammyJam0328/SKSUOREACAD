@@ -62,15 +62,14 @@
 
 <x-guest-layout>
     <div
-        class="min-h-screen bg-gradient-to-r from-green-300 to-green-600 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        class="min-h-screen bg-gradient-to-r from-green-100 to-green-600 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 
 
         <div x-data="{password:''}" class="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-10 px-8 shadow sm:rounded-lg  ">
                 <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                    <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow">
-                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    <img class="mx-auto h-14 w-auto" src="{{ asset('images/OREACADLogo.svg') }}" alt="OREACAD LOGO">
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-green-900">
                         Register
                     </h2>
 
