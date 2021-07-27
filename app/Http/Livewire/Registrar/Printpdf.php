@@ -13,8 +13,7 @@ use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request;
 use Illuminate\Database\Eloquent\Builder;
-use PDF;
-use App;
+
 class Printpdf extends Component
 {
     public $requests=[];
