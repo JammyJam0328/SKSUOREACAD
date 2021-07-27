@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('images/OREACADLogo.svg') }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -48,10 +49,8 @@
                     </button>
                 </div>
 
-                <div class="flex-shrink-0 flex items-center px-4">
-                    <img class="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                        alt="Workflow">
+                <div class="flex-shrink-0  flex items-center justify-center px-4">
+                    <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}" alt="SKSU OREACAD">
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
                     <nav class="px-2 space-y-1">
@@ -115,10 +114,8 @@
             <div class="flex flex-col w-64">
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
-                    <div class="flex items-center flex-shrink-0 px-4">
-                        <img class="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                            alt="Workflow">
+                    <div class="flex-shrink-0  flex items-center justify-center px-4">
+                        <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}" alt="SKSU OREACAD">
                     </div>
                     <div class="mt-5 flex-grow flex flex-col">
                         <nav class="flex-1 px-2 bg-white space-y-1">
@@ -163,10 +160,22 @@
                                 <span class="">Documents</span>
                             </a>
 
+                            <a href="{{ route('registrar-reports') }}"
+                                class="menu-button {{ Request::routeIs('registrar-reports') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="">Reports</span>
+                            </a>
+
                         </nav>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="flex flex-col w-0 flex-1 overflow-hidden">
             <div class="relative z-10 flex-shrink-0 flex h-12  bg-gradient-to-r from-green-500 to-green-700 shadow">
@@ -245,10 +254,27 @@
         </div>
     </div>
 
+    <div id="page-preloader"
+        class="grid items-center justify-center  w-full h-full fixed top-0 left-0 bg-green-700 z-50">
+        <span class="grid items-center justify-center animate-bounce ">
+            <img src="{{ asset('images/loading.svg') }}" class="h-52 w-52" alt="">
+            <h1 class="text-center text-white font-bold text-2xl">Loading . . . </h1>
+        </span>
+    </div>
+
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     </script>
+
     <x-livewire-alert::scripts />
+    <script>
+        window.addEventListener('load', (event) => {
+            document.getElementById('page-preloader').style.display = "none";
+        });
+        window.addEventListener('beforeunload', (event) => {
+            document.getElementById('page-preloader').style.display = "flex";
+        });
+    </script>
 </body>
 
 </html>

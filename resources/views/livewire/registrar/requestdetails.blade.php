@@ -363,7 +363,7 @@
                                 </div>
                             </div>
 
-                            <div class="py-3 xl:pt-6 xl:pb-0">
+                            <div x-data="{validID:false}" class="py-3 xl:pt-6 xl:pb-0">
                                 <!-- This example requires Tailwind CSS v2.0+ -->
                                 <section aria-labelledby="applicant-information-title">
                                     <div class="bg-white shadow sm:rounded-lg">
@@ -452,15 +452,45 @@
                                                         @endif
                                                     </dd>
                                                 </div>
-
-
-
-
                                             </dl>
-                                        </div>
 
+                                        </div>
+                                        <div x-on:click="validID=true"
+                                            class="cursor-pointer bg-gray-100 py-2 text-center">
+                                            Show Valid ID
+                                        </div>
                                     </div>
                                 </section>
+                                <!-- This example requires Tailwind CSS v2.0+ -->
+                                <div x-cloak x-show="validID" x-transition:enter="ease-out duration-300"
+                                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                    x-transition:leave="ease-in duration-200"
+                                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                    class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title"
+                                    role="dialog" aria-modal="true">
+                                    <div
+                                        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                                            aria-hidden="true"></div>
+                                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
+                                            aria-hidden="true">&#8203;</span>
+                                        <div
+                                            class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                                            <div>
+                                                <img class="h-96 w-full max-h-96"
+                                                    src="/storage/{{ $request->information->valid_id }}" alt="">
+                                            </div>
+                                            <div class="mt-5 sm:mt-6">
+                                                <button x-on:click="validID=false" type="button"
+                                                    class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                             <aside class="mt-2 xl:hidden">
@@ -484,11 +514,12 @@
                                                             class="font-medium text-gray-900">{{ $document->name }}</a>
                                                     </div>
                                                     <div class="mt-1 text-sm text-gray-700 space-y-1">
-                                                        <p>&#8369; {{ $document->amount }}</p>
+
                                                         @if ($request->information->status != 'Graduated')
 
 
                                                             @if ($document->id == $TOR_ID)
+                                                                <p>&#8369; ({{ $document->other_description }})</p>
                                                                 <div>
                                                                     <div>
                                                                         @if ($document->pivot->number_of_page > 0)
@@ -535,39 +566,14 @@
 
 
                                                             @endif
-                                                            @if ($document->name == $authentication)
-
-                                                                <div>
-                                                                    <p>Set: {{ $document->pivot->number_of_page }}
-                                                                    </p>
-                                                                </div>
-
-                                                                @if ($document->pivot->total_amount == '0')
-                                                                    <button
-                                                                        wire:click.prevent="saveSet({{ $document->id }},{{ $request->id }})"
-                                                                        class="p-1 shadow rounded-md bg-yellow-500 focus:outline-none text-white hover:bg-yellow-400"><svg
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-5 w-5" viewBox="0 0 20 20"
-                                                                            fill="currentColor">
-                                                                            <path fill-rule="evenodd"
-                                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                                clip-rule="evenodd" />
-                                                                        </svg></button>
-                                                                @else
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        class="h-5 w-5 text-green-600"
-                                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                            clip-rule="evenodd" />
-                                                                    </svg>
-                                                                @endif
 
 
-                                                            @endif
-
-
-                                                            @if ($document->id != $TOR_ID && $document->name !== $authentication)
+                                                            @if ($document->id != $TOR_ID)
+                                                                <p>&#8369; {{ $document->amount }}</p>
+                                                                <p>Copies : {{ $document->pivot->copies }}
+                                                                </p>
+                                                                <p>Authentication : {{ $document->pivot->isAuth }}
+                                                                </p>
                                                                 @if ($document->pivot->total_amount == '0' && $document->pivot->number_of_page == '0')
                                                                     <button
                                                                         wire:click.prevent="saveTotal({{ $document->id }},{{ $request->id }})"
@@ -606,11 +612,22 @@
                                     <div>
                                         <div>
                                             @if ($request->information->status != 'Graduated')
-                                                <label for="total_amount">Total Amount to Pay</label>
+
+                                                <div class="flex items-center space-x-2 pb-2">
+                                                    <label for="total_amount">Total Amount of Document : &#8369;</label>
+                                                    <span>{{ $total_amount }}</span>
+                                                </div>
+                                                <hr>
+                                            @endif
+                                        </div>
+                                        <div class="py-2">
+                                            @if ($request->information->status != 'Graduated')
+                                                <label for="total_amount">Documentary Stamp</label>
                                                 <div class="flex items-center space-x-4">
-                                                    <input wire:model="total_amount" type="number" name="total_amount"
-                                                        id="total_amount"
+                                                    <input wire:model="documentary_stamp" type="number"
+                                                        name="total_amount" id="total_amount"
                                                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+
                                                 </div>
                                             @endif
                                         </div>
@@ -666,12 +683,13 @@
                                             <a href="#" class="font-medium text-gray-900">{{ $document->name }}</a>
                                         </div>
                                         <div class="mt-1 text-sm text-gray-700 space-y-1">
-                                            <p>&#8369; {{ $document->amount }}</p>
+
 
                                             @if ($request->information->status != 'Graduated')
 
 
                                                 @if ($document->id == $TOR_ID)
+                                                    <p> &#8369; ({{ $document->other_description }})</p>
                                                     <div>
                                                         <div>
                                                             @if ($document->pivot->number_of_page > 0)
@@ -712,41 +730,13 @@
                                                             <span class="text-red-600">{{ $message }}</span>
                                                         @enderror
                                                     </div>
-
-
-                                                @endif
-                                                @if ($document->name == $authentication)
-
-                                                    <div>
-                                                        <p>Set: {{ $document->pivot->number_of_page }}
-                                                        </p>
-                                                    </div>
-
-                                                    @if ($document->pivot->total_amount == '0')
-                                                        <button
-                                                            wire:click.prevent="saveSet({{ $document->id }},{{ $request->id }})"
-                                                            class="p-1 shadow rounded-md bg-yellow-500 focus:outline-none text-white hover:bg-yellow-400"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                                viewBox="0 0 20 20" fill="currentColor">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg></button>
-                                                    @else
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-5 w-5 text-green-600" viewBox="0 0 20 20"
-                                                            fill="currentColor">
-                                                            <path fill-rule="evenodd"
-                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                                clip-rule="evenodd" />
-                                                        </svg>
-                                                    @endif
-
-
                                                 @endif
 
-
-                                                @if ($document->id != $TOR_ID && $document->name !== $authentication)
+                                                @if ($document->id != $TOR_ID)
+                                                    <p>&#8369; {{ $document->amount }}</p>
+                                                    <p>Copies : {{ $document->pivot->copies }}
+                                                    </p>
+                                                    <p>Authentication : {{ $document->pivot->isAuth }}</p>
                                                     @if ($document->pivot->total_amount == '0' && $document->pivot->number_of_page == '0')
                                                         <button
                                                             wire:click.prevent="saveTotal({{ $document->id }},{{ $request->id }})"
@@ -782,9 +772,19 @@
                         <div>
                             <div>
                                 @if ($request->information->status != 'Graduated')
-                                    <label for="total_amount">Total Amount to Pay</label>
+
+                                    <div class="flex items-center space-x-2 pb-2">
+                                        <label for="total_amount">Total Amount of Document : &#8369;</label>
+                                        <span>{{ $total_amount }}</span>
+                                    </div>
+                                    <hr>
+                                @endif
+                            </div>
+                            <div class="py-2">
+                                @if ($request->information->status != 'Graduated')
+                                    <label for="total_amount">Documentary Stamp</label>
                                     <div class="flex items-center space-x-4">
-                                        <input wire:model="total_amount" type="number" name="total_amount"
+                                        <input wire:model="documentary_stamp" type="number" name="total_amount"
                                             id="total_amount"
                                             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
 

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Registrar;
 
 use Livewire\Component;
+use App\Events\RequestorEvent;
 use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
@@ -24,7 +25,7 @@ class Requestdetails extends Component
     public $page_count;
     public $request;
     public $response;
-
+    public $isAuthAmount=15;
     public $total_amount;
     public $checkAmountSave=false;
      // Authentication document is 15 per set
@@ -32,6 +33,7 @@ class Requestdetails extends Component
         // TOR for Graduate school 75 first page and 50 for succeeding pages
     public $TOR_ID="5";
 
+    public $documentary_stamp;
 
     protected $listeners = [
         'confirmed',
@@ -80,37 +82,36 @@ class Requestdetails extends Component
             $sum=$document->amount*$temp;
             $total=$sum+75;
         }
-
         $document->pivot->update([
             'number_of_page'=>$this->page_count,
             'total_amount'=>$total,
-
         ]);
         $this->page_count="";
 
    
     }  
 
-    public function saveSet($id,$request)
-    {
-        $thisRequest=Request::where('id',$request)->first();
-        $document=$thisRequest->documents()->whereDocumentId($id)->first();
-
-        $total=$document->pivot->number_of_page *$document->amount;
-            
-        $document->pivot->update([
-            'total_amount'=>$total,
-        ]);
-    }  
-
+  
      public function saveTotal($id,$request)
     {
        
+       
         $thisRequest=Request::where('id',$request)->first();
         $document=$thisRequest->documents()->whereDocumentId($id)->first();
-        $document->pivot->update([
-            'total_amount'=>$document->amount,
-        ]);
+        
+        $isAuthTotal;
+        $totalAmount = $document->amount*$document->pivot->copies;
+
+        if ($document->pivot->isAuth=="yes") {
+            $isAuthTotal = $this->isAuthAmount*$document->pivot->copies;
+             $document->pivot->update([
+                 'total_amount'=>$isAuthTotal+$totalAmount,
+             ]);
+        }else{
+            $document->pivot->update([
+                'total_amount'=>$totalAmount,
+            ]);
+        }
     }
     public function approved($id)
     {
@@ -124,6 +125,7 @@ class Requestdetails extends Component
             Transaction::create([
                 'request_id'=>$request->id,
                 'amount'=>$request->documents()->sum('total_amount'),
+                'documentary_stamp'=>$this->documentary_stamp,
             ]);
 
             $emailDetails=[
@@ -134,7 +136,7 @@ class Requestdetails extends Component
             ];
     
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
-    
+            event(new RequestorEvent($request->information->user->id));
             return redirect()->route('registrar-dashboard');    
         }else{
            $this->alert('error','Please check the documents');

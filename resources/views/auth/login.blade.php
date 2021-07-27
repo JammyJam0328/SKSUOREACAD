@@ -48,9 +48,7 @@
 </x-guest-layout> --}}
 
 <x-guest-layout>
-
-
-    <div x-data={menu:false} class="relative bg-gradient-to-r from-green-100 to-green-600 overflow-auto h-screen">
+    {{-- <div x-data={menu:false} class="relative flex items-center justify-items-center bg-gradient-to-r from-green-100 to-green-600 overflow-auto h-screen">
         <div class="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">
             <svg class="absolute bottom-0 right-0 transform translate-x-1/2 mb-48 text-gray-700 lg:top-0 lg:mt-28 lg:mb-0 xl:transform-none xl:translate-x-0"
                 width="364" height="384" viewBox="0 0 364 384" fill="none">
@@ -173,10 +171,118 @@
                 </div>
             </main>
         </div>
+    </div> --}}
+
+    <div class="relative bg-gradient-to-r from-green-100 to-green-600 overflow-visible h-screen">
+        <div class="hidden md:flex items-center justify-start space-x-3 py-5 px-10">
+            <div>
+                <img src="{{ asset('images/sksu1.png') }}" class="h-14 w-auto" alt="">
+            </div>
+            <div>
+                <h1 class="text-4xl font-bold text-green-900 text-center">SULTAN KUDARAT STATE
+                    UNIVERSITY
+                </h1>
+            </div>
+        </div>
+
+        <div class="relative pb-16 sm:pb-24">
+            <main class="md:mt-10">
+                <div class="mx-auto max-w-7xl">
+                    <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                        <div
+                            class="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
+                            <div>
+                                <div class="pb-3 grid items-center justify-center">
+
+                                </div>
+                                <div>
+                                    <img src="{{ asset('images/OREACADLogo1.png') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
+                            <div class="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
+                                <div class="px-4 py-8 sm:px-10">
+                                    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+                                        <img class="mx-auto h-14 w-auto" src="{{ asset('images/OREACADLogo.svg') }}"
+                                            alt="OREACAD LOGO">
+                                        <h2 class="mt-6 text-center text-3xl font-extrabold text-green-900">
+                                            SIGN IN
+                                        </h2>
+
+                                    </div>
+                                    @if (session('status'))
+                                        <div class="mb-4 font-medium text-sm text-green-600">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
+
+                                    <x-jet-validation-errors class="mb-4" />
+                                    <form class="space-y-3" method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-gray-700">
+                                                Email address
+                                            </label>
+                                            <div class="mt-1">
+                                                <input id="email" name="email" type="email" autocomplete="email"
+                                                    required
+                                                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-700 focus:border-green-700 sm:text-sm">
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label for="password" class="block text-sm font-medium text-gray-700">
+                                                Password
+                                            </label>
+                                            <div class="mt-1">
+                                                <input id="password" name="password" type="password"
+                                                    autocomplete="current-password" required
+                                                    class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-700 focus:border-green-700 sm:text-sm">
+                                            </div>
+                                        </div>
+
+                                        @if (Route::has('password.request'))
+                                            <a class="underline text-sm text-gray-600 hover:text-gray-900"
+                                                href="{{ route('password.request') }}">
+                                                {{ __('Forgot your password?') }}
+                                            </a>
+                                        @endif
+
+                                        <div class="pt-5">
+                                            <button type="submit"
+                                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                                Sign in
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="mt-10">
+                                        <div class="relative">
+
+                                            <div class="absolute inset-0 flex items-center justify-center">
+                                                <a href="{{ route('register') }}" class="underline">
+                                                    Register
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="px-4 py-6 bg-gray-50 border-t-2 border-gray-200 sm:px-10">
+                                    <p class="text-xs leading-5 text-gray-500">By signing up, you agree to our <a
+                                            href="#" class="font-medium text-gray-900 hover:underline">Terms</a>, <a
+                                            href="#" class="font-medium text-gray-900 hover:underline">Data Policy</a>
+                                        and <a href="#" class="font-medium text-gray-900 hover:underline">Cookies
+                                            Policy</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-
-
-
 
 
 

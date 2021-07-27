@@ -5,11 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" href="{{ asset('images/OREACADLogo.svg') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -52,10 +51,8 @@
                     </button>
                 </div>
 
-                <div class="flex-shrink-0 flex items-center px-4">
-                    <img class="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                        alt="Workflow">
+                <div class="flex-shrink-0  flex items-center justify-center px-4">
+                    <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}" alt="SKSU OREACAD">
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
                     <nav class="flex-1 px-2 bg-white space-y-1">
@@ -93,10 +90,8 @@
             <div class="flex flex-col w-64">
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
-                    <div class="flex items-center flex-shrink-0 px-4">
-                        <img class="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                            alt="Workflow">
+                    <div class="flex items-center justify-center flex-shrink-0 px-4">
+                        <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}" alt="SKSU OREACAD">
                     </div>
                     <div class="mt-5 flex-grow flex flex-col">
                         <nav class="flex-1 px-2 bg-white space-y-1">
@@ -144,7 +139,7 @@
                     </div>
                     <div class="ml-4 flex items-center md:ml-6">
 
-
+                        @livewire('user-notification')
                         <!-- Profile dropdown -->
                         <div class="ml-3 relative">
                             <div>
@@ -200,13 +195,52 @@
 
 
     </div>
-
+    <div id="page-preloader"
+        class="grid items-center justify-center  w-full h-full fixed top-0 left-0 bg-green-700 z-50">
+        <span class="grid items-center justify-center animate-bounce ">
+            <img src="{{ asset('images/loading.svg') }}" class="h-52 w-52" alt="">
+            <h1 class="text-center text-white font-bold text-2xl">Loading . . . </h1>
+        </span>
+    </div>
 
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     </script>
     <x-livewire-alert::scripts />
+
+    <script>
+        window.addEventListener('load', (event) => {
+            document.getElementById('page-preloader').style.display = "none";
+        });
+        window.addEventListener('beforeunload', (event) => {
+            document.getElementById('page-preloader').style.display = "flex";
+        });
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            function showNotification() {
+                const notification = new Notification("New Notification from SKSU OROAD");
+            };
+
+            window.Livewire.on('notify', () => {
+                if (Notification.permission === "granted") {
+
+                    showNotification();
+
+
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === "granted") {
+                            showNotification();
+                        }
+                    });
+
+                } else {
+                    Notification.requestPermission();
+                };
+            });
+        });
+    </script>
 </body>
 
 </html>

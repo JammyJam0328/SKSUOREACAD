@@ -11,13 +11,20 @@
                 <dl class="sm:divide-y sm:divide-gray-200">
                     <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
+                            Code
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $request->request_code }}
+                        </dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
                             Full name
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $request->information->firstname }}
                             {{ $request->information->middlename }}
                             {{ $request->information->lastname }}
-
                         </dd>
                     </div>
                     <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -100,7 +107,7 @@
                 </dl>
             </div>
         </div>
-        <div class="w-full bg-white rounded-lg shadow p-2    md:pb-5 overflow-hidden">
+        <div class="w-full bg-white ring-1 ring-blue-500 shadow p-2    md:pb-5 overflow-hidden">
             @if ($request->status == 'Approved')
                 <div>
                     <div class="flex items-center ">
@@ -108,61 +115,12 @@
                             Payment
                         </span>
                     </div>
-                    <div class="flex flex-col">
-                        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                    <table class="min-w-full divide-y divide-gray-200">
-                                        <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col"
-                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Document
-                                                </th>
-
-                                                <th scope="col"
-                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Amount
-                                                </th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($request->documents as $document)
-                                                <tr class="bg-white">
-                                                    <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                        {{ $document->name }}
-                                                    </td>
-
-                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                        &#8369; {{ $document->pivot->total_amount }}
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-
-
-                                            <!-- Even row -->
-                                            <tr class="bg-gray-50">
-                                                <td
-                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    Total Amount
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    &#8369; {{ $total_amount }}
-                                                </td>
-
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex space-x-2 px-5 py-3">
+                        <h1>TOTAL AMOUNT TO PAY :</h1> <span class="px-1 shadow-lg bg-green-100">&#8369;
+                            {{ $total_amount + $request->transaction->documentary_stamp }}</span>
                     </div>
 
-                    <div class="md:flex md:space-x-2">
+                    <div class="px-5 md:flex md:space-x-2">
                         <div class="mt-3">
                             <a href="https://epaymentportal.landbank.com/pay1.php?code=S05EUEtVSGltb2t0emdaNmwyRFV5aG1pVVYzNHdTRXByL2ZoNHZjS1pZRT0="
                                 type="button"
@@ -181,14 +139,12 @@
                                         d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                                         clip-rule="evenodd" />
                                 </svg>
-
                             </a>
-
                         </div>
 
 
                     </div>
-                    <form class="border-t border-gray-400 mt-5">
+                    <form class="border-t border-gray-400 mt-5 px-5">
                         @csrf
                         <div class="py-2 space-y-3">
                             <label for="proof_of_payment">Proof of Payment (Image of actual reciept)</label>
@@ -241,6 +197,13 @@
             @endif
         </div>
 
+    </div>
+    <div wire:loading.flex wire:target="saveProofOfPayment"
+        class="w-full h-full flex fixed items-center justify-center top-0 left-0 bg-white opacity-75 z-50">
+        <div class="grid items-center justify-center animate-bounce">
+            <img src="{{ asset('images/loading.svg') }}" class="h-32 w-32" alt="">
+            <span class="mx-auto">loading... </span>
+        </div>
     </div>
 
 </div>

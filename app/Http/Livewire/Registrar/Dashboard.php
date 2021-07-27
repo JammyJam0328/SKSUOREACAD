@@ -23,6 +23,8 @@ class Dashboard extends Component
 
 
     public $mycampus;
+
+  
     public function render()
     {
         $this->mycampus=auth()->user()->campus_id;
@@ -36,11 +38,9 @@ class Dashboard extends Component
         $this->countPending=Request::where('status','Pending')->where('campus_id',$this->mycampus)
                             ->count();
         $this->countToReview=Request::where('status','Payment Review')->where('campus_id',$this->mycampus)
-                            ->whereHas('information', function (Builder $query) {
-                                $query->where('status', 'Ongoing')->orWhere('status','Not Graduated');
-                            })->count();
+                            ->count();
 
-          $this->countUnread=Request::where('read','no')->where('campus_id',$this->mycampus)
+          $this->countUnread=Request::where('read','no')->where('campus_id',$this->mycampus)->where('status','!=','draft')
                             ->whereHas('information', function (Builder $query) {
                                 $query->where('status', 'Ongoing')->orWhere('status','Not Graduated');
                             })->count();
@@ -50,4 +50,5 @@ class Dashboard extends Component
         ]);
     }
 
+    
 }

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Document;
-use App\Models\DocumentCategory;
 use Illuminate\Support\Facades\DB;
 class DocumentSeeder extends Seeder
 {
@@ -15,74 +14,62 @@ class DocumentSeeder extends Seeder
      */
     public function run()
     {
-        $category=DocumentCategory::create([
-            'name'=>'Transcript of Records'
-        ]);
-        $category->document()->create([
+      
+       Document::create([
             'name'=>'TOR For UnderGrad (2 yr Course)',
             'amount'=>'125'
         ]);
-        $category->document()->create([
+       Document::create([
             'name'=>'TOR For UnderGrad (4-5 Yr Degree) for Employment',
             'amount'=>'175'
         ]);
-        $category->document()->create([
+       Document::create([
             'name'=>'TOR For UnderGrad (4-5 Yr Degree) for Board Exam',
             'amount'=>'250'
         ]);
-        $category->document()->create([
-            'name'=>'TOR For UnderGrad (4-5 Yr Degree) for Tansfer',
+       Document::create([
+            'name'=>'TOR For UnderGrad (4-5 Yr Degree) for Tansfer/Evaluation',
             'amount'=>'300'
         ]);
-        $category->document()->create([
+       Document::create([
             'name'=>'TOR For Graduate School',
             'amount'=>'50',
             'other_description'=>'First Page-75 Succeeding-50'
         ]);
 
-
-        $category=DocumentCategory::create([
-            'name'=>'Certifications'
-        ]);
-
-        $category->document()->create([
+       Document::create([
             'name'=>'Certification (Undergrad students)',
             'amount'=>'20'
         ]);
         
-        $category->document()->create([
+       Document::create([
             'name'=>'Certification (Graduate School)',
             'amount'=>'30'
         ]);
         
         
-        $category->document()->create([
+       Document::create([
             'name'=>'Certification of Weighted Average',
             'amount'=>'30'
         ]);
-
-
-        $category=DocumentCategory::create([
-            'name'=>'Others'
-        ]);
-                     
-        $category->document()->create([
+     
+       Document::create([
             'name'=>'CAV',
             'amount'=>'50'
         ]);
    
-         $category->document()->create([
+        Document::create([
             'name'=>'Re-issuance of Diploma',
             'amount'=>'250'
         ]);         
-        $category->document()->create([
-            'name'=>'Authentication',
-            'amount'=>'15',
-            'other_description'=>'15 per set'
+
+       Document::create([
+            'name'=>'Certificate of good moral',
+            'amount'=>'30'
         ]);
 
-        $category->document()->create([
-            'name'=>'Documentary Stamp',
+        Document::create([
+            'name'=>'Plan of course work',
             'amount'=>'30'
         ]);
 

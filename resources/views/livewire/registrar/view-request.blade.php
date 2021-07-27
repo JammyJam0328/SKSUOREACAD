@@ -83,6 +83,38 @@
                                 </div>
                                 <div class="mt-6 border-t border-gray-200 py-6 space-y-8">
                                     <div>
+                                            <div>
+                                                <h2 class="text-sm font-medium text-gray-500">Request Code</h2>
+                                                <ul class="mt-3 space-y-3">
+                                                    <li class="flex justify-start">
+                                                        <a href="#" class="flex items-center space-x-3">
+                                                            <div class="flex-shrink-0">
+
+                                                            </div>
+                                                            <div class="text-sm font-medium text-gray-900">
+                                                                {{ $request->request_code }}</div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                    </div>
+                                </div>
+                                <div class="mt-6 border-t border-gray-200 py-6 space-y-8">
+                                    <div>
+                                        <div class="space-y-2">
+                                            @if ($request->information->status != 'Denied')
+                                                <label for="total_amount">Remarks :</label>
+                                                <div class="flex items-center space-x-4">
+                                                    {{ $request->response }}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="mt-6 border-t border-gray-200 py-6 space-y-8">
+                                    <div>
                                         @if ($request->status == 'Ready To Claim')
                                             <div>
                                                 <h2 class="text-sm font-medium text-gray-500">Retrieval Date</h2>
@@ -225,6 +257,23 @@
                         @endforeach
 
 
+                    </div>
+                    <div class="mt-6 border-t border-gray-200 py-6 space-y-8">
+                        <div>
+                                <div>
+                                    <h2 class="text-sm font-medium text-gray-500">Request Code</h2>
+                                    <ul class="mt-3 space-y-3">
+                                        <li class="flex justify-start">
+                                            <a href="#" class="flex items-center space-x-3">
+                                           
+                                                <div class="text-xl font-bold text-gray-900">
+                                                    {{ $request->request_code }}</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                        </div>
                     </div>
 
                     <div class="mt-6 border-t border-gray-200 py-6 space-y-8">

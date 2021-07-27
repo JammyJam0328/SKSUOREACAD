@@ -17,13 +17,37 @@ class Dashboard extends Component
 {
     use WithPagination;
     public $requests=[];
+    public $drafts=[];
+    public $notification = false;
+    public $user_id;
+    
+   
+    protected function getListeners()
+    {
+
+        return [
+            "echo-private:requestor.".auth()->user()->id.",RequestorEvent" => 'notify'
+        ];
+    }
+ 
+    public function notify()
+    {
+       $this->emit('notify');
+    }
+  
     public function render()
     {   
 
         $requestor = Information::where('user_id',auth()->user()->id)->first();
         if($requestor){
-            $this->requests=RequestModel::where('information_id',$requestor->id)->orderBy('created_at','DESC')->get();
-        }        
+            $this->requests=RequestModel::where('information_id',$requestor->id)->where('status','!=','draft')->orderBy('created_at','DESC')->get();
+        }
+        if($requestor){
+            $this->drafts=RequestModel::where('information_id',$requestor->id)->where('status','draft')->orderBy('created_at','DESC')->get();
+        }                
         return view('livewire.requestor.dashboard');
     }
+
+
+    
 }

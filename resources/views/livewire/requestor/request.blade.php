@@ -1,7 +1,4 @@
 <div class="py-6">
-
-
-
     @if ($dontHaveInformation)
         <div class="space-y-4">
             <div
@@ -21,7 +18,6 @@
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
                                 Personal Information
                             </h3>
-
                         </div>
                         <div class="space-y-6 sm:space-y-5">
                             <div
@@ -69,7 +65,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="last_name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -84,7 +79,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="sex" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -102,7 +96,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -131,7 +124,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="contact_number"
@@ -147,7 +139,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="campus" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -167,7 +158,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -206,7 +196,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div
                                 class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label for="valid_id" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
@@ -237,9 +226,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="pt-5">
                     <div class="flex items-center justify-end">
 
@@ -250,11 +237,7 @@
                     </div>
                 </div>
             </form>
-
         </div>
-
-
-
     @else
         {{-- Exist Information? Direct Request --}}
         <div x-data="{others:@entangle('others')}" class="space-y-4">
@@ -283,7 +266,12 @@
                                         <dd
                                             class="flex items-center text-sm text-gray-500 font-medium capitalize sm:mr-6">
                                             <!-- Heroicon name: solid/office-building -->
-                                            <i class="fa fa-portrait flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                                fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
 
                                             {{ auth()->user()->information->studentnumber }}
 
@@ -293,15 +281,28 @@
                                             class="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
                                             <!-- Heroicon name: solid/check-circle -->
                                             @if (auth()->user()->information->status == 'Graduated')
-                                                <i
-                                                    class="fa fa-graduation-cap flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"></i>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                                </svg>
                                             @endif
                                             @if (auth()->user()->information->status == 'Ongoing')
-                                                <i class="fa fa-book flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"></i>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path
+                                                        d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                                                </svg>
                                             @endif
                                             @if (auth()->user()->information->status == 'Not Graduated')
-                                                <i
-                                                    class="fa fa-building flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"></i>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                                        clip-rule="evenodd" />
+                                                    <path
+                                                        d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                                </svg>
                                             @endif
                                             {{ auth()->user()->information->status }}
                                         </dd>
@@ -318,7 +319,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="p-4 bg-white shadow-md space-y-5 border-t-4 border-green-700">
                 <div class=" rounded shadow ring-1 ring-green-600 text-green-700 flex items-center space-x-2 p-2">
@@ -337,156 +337,113 @@
 
 
                 {{-- form request --}}
-                <div>
-
-                    <div class="">
-                        <span>Select Document and Complete the form</span>
-                    </div>
-
-                    <form class="space-y-8 ">
-                        @csrf
-                        <div class="grid md:flex gap-x-20 gap-y-2">
-                            @foreach ($categories as $category)
-                                <div class="space-y-2">
-                                    <span class="font-semibold text-lg">{{ $category->name }}</span>
-                                    @forelse ($my_campus_documents->where('document_category_id', $category->id) as $document)
-                                        <div class="relative flex items-start">
-                                            <div class="flex items-center h-5">
-                                                <input wire:model="selected_documents" value="{{ $document->id }}"
-                                                    id="selectedDocs" name="selectedDocs" type="checkbox"
-                                                    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                            </div>
-                                            <div class="ml-3 text-sm">
-                                                <label for="offers"
-                                                    class="font-medium text-gray-700">{{ $document->name }}</label>
-                                            </div>
-                                        </div>
-                                    @empty
-                                        <div class="grid items-center justify-center">
-                                            <div class="mx-auto">
-                                                <img src="{{ asset('images/empty.svg') }}" class="h-40 w-40" alt="">
-                                                <span class="text-gray-700">No available document </span>
-                                            </div>
-                                        </div>
-
-                                    @endforelse
-                                </div>
-                            @endforeach
-
+                <form class="">
+                    @csrf
+                    <div>
+                        <div class="mb-10">
+                            <span>Select Document and Complete the form</span>
                         </div>
-                </div>
-                <div class='py-1'>
-                    @error('selected_documents')
-                        <span class="text-red-600">{{ $message }}</span>
-                    @enderror
+                        @csrf
+                        <div class="grid md:grid-cols-3 gap-4">
+                            @if (count($my_campus_documents) > 0)
+                                @foreach ($my_campus_documents as $document)
+                                    <div class="relative flex items-start">
+                                        <div class="flex items-center h-5">
+                                            <input wire:model="selected_documents" value="{{ $document->id }}"
+                                                id="selected_documents-{{ $document->id }}"
+                                                name="selected_documents-{{ $document->id }}" type="checkbox"
+                                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                                        </div>
+                                        <div class="ml-3 text-sm">
+                                            <label for="offers"
+                                                class="font-medium text-gray-700">{{ $document->name }}</label>
+                                        </div>
+                                    </div>
 
-                    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-                        <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+                                @endforeach
 
-                            <div class="space-y-6 sm:space-y-5">
+                            @else
+                                <div class="grid items-center justify-center">
+                                    <div class="mx-auto">
+                                        <img src="{{ asset('images/empty.svg') }}" class="h-40 w-40" alt="">
+                                        <span class="text-gray-700">No available document </span>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class='py-1'>
+                        @error('selected_documents')
+                            <span class="text-red-600">{{ $message }}</span>
+                        @enderror
+                        <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                            <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
+                                <div class="space-y-6 sm:space-y-5">
 
-                                <div>
-                                    @if (in_array($Authentication, $selected_documents))
-                                        <div
-                                            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                            <label for="first_name"
-                                                class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                Number of Set (Authentication)
-                                            </label>
-                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
-                                                <input wire:model.lazy="set" type="text" name="set" id="set"
-                                                    autocomplete="given-name"
+                                    <div
+                                        class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="first_name"
+                                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                            Complete name of receiver
+                                        </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input wire:model.lazy="receiver_name" type="text" name="receiver_name"
+                                                id="receiver_name" autocomplete="given-name"
+                                                class="max-w-lg block w-full shadow-sm focus:ring-green-600 focus:border-green-600 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            @error('receiver_name')
+                                                <span class="text-red-600">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="country"
+                                            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                                            Purpose
+                                        </label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2 space-y-2">
+                                            <select wire:change="selectChanged" wire:model="purpose" id="purpose"
+                                                name="purpose"
+                                                class="max-w-lg block focus:ring-green-600 focus:border-green-600 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                <option value="" selected></option>
+                                                @foreach ($purposes as $purpose)
+                                                    <option value="{{ $purpose->id }}">{{ $purpose->description }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('purpose')
+                                                <span class="text-red-600">{{ $message }}</span>
+                                            @enderror
+                                            <div x-show="others">
+                                                <input wire:model="specified_purpose" type="text"
+                                                    name="specified_purpose" placeholder="Specify your purpose"
+                                                    id="specified_purpose"
                                                     class="max-w-lg block w-full shadow-sm focus:ring-green-600 focus:border-green-600 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                                @error('set')
+                                                @error('specified_purpose')
                                                     <span class="text-red-600">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
-                                    @endif
-                                </div>
-                                <div
-                                    class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="first_name"
-                                        class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                        Complete name of receiver
-                                    </label>
-                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                                        <input wire:model.lazy="receiver_name" type="text" name="receiver_name"
-                                            id="receiver_name" autocomplete="given-name"
-                                            class="max-w-lg block w-full shadow-sm focus:ring-green-600 focus:border-green-600 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                        @error('receiver_name')
-                                            <span class="text-red-600">{{ $message }}</span>
-                                        @enderror
                                     </div>
                                 </div>
-
-
-
-
-
-                                <div
-                                    class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                    <label for="country"
-                                        class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                        Purpose
-                                    </label>
-                                    <div class="mt-1 sm:mt-0 sm:col-span-2 space-y-2">
-                                        <select wire:change="selectChanged" wire:model="purpose" id="purpose"
-                                            name="purpose"
-                                            class="max-w-lg block focus:ring-green-600 focus:border-green-600 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                            <option value="" selected></option>
-                                            @foreach ($purposes as $purpose)
-                                                <option value="{{ $purpose->id }}">{{ $purpose->description }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('purpose')
-                                            <span class="text-red-600">{{ $message }}</span>
-                                        @enderror
-                                        <div x-show="others">
-                                            <input wire:model="specified_purpose" type="text" name="specified_purpose"
-                                                placeholder="Specify your purpose" id="specified_purpose"
-                                                class="max-w-lg block w-full shadow-sm focus:ring-green-600 focus:border-green-600 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                            @error('specified_purpose')
-                                                <span class="text-red-600">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-
                             </div>
                         </div>
+                        <div class="pt-5">
+                            <div class="flex items-center justify-end">
 
+                                <button wire:click.prevent="requestdocument"
+                                    class=" items-center space-x-2 ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
 
-                    </div>
-
-                    <div class="pt-5">
-                        <div class="flex items-center justify-end">
-
-                            <button wire:click.prevent="requestdocument"
-                                class=" items-center space-x-2 ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                                <i class="fa fa-paper-plane"></i>
-                                <span>Send</span>
-                            </button>
+                                    <span>Continue</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    </form>
-
-
-
-
-                </div>
-
-
+                </form>
             </div>
+
         </div>
-
     @endif
-
     <div>
         <div wire:loading.flex wire:target="requestdocument"
             class="w-full h-full flex fixed items-center justify-center top-0 left-0 bg-white opacity-75 z-50">
@@ -502,7 +459,5 @@
                 <span class="mx-auto">loading... </span>
             </div>
         </div>
-
-
     </div>
 </div>

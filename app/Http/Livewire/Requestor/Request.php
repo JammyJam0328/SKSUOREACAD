@@ -7,11 +7,10 @@ use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
-use App\Models\DocumentCategory;
+use App\Models\Document;
 use App\Models\Purpose;
 use App\Models\Request as RequestModel;
-
+use Illuminate\Support\Str;
 
 
 
@@ -48,7 +47,6 @@ class Request extends Component
     public $valid_id;
 
     public $my_campus_documents=[];
-    public $categories=[];
     public $purposes=[];
     public $others=false;
     public $purpose;
@@ -62,13 +60,10 @@ class Request extends Component
     public $ongoing="Ongoing";
     public $not_graduated="Not graduated";
     public $graduated="Graduated";
+   
 
-    public $Authentication = "11";
-
-    public $set='1';
     public function render()
     {
-
         $this->campuses=Campus::get();
         $this->send_to_access=$this->campuses->where('id','1')->first();
         if($this->campus){
@@ -79,15 +74,16 @@ class Request extends Component
             $campus=Campus::find(auth()->user()->information->course->campus_id);
             $this->my_campus_documents=$campus->documents()->where('campus_documents.status','Available')->get();
 
-            $this->categories=DocumentCategory::get();
-
         }
+       
         return view('livewire.requestor.request');
     }
 
+
     public function selectChanged()
     {
-        if($this->purpose=="5"){
+
+        if($this->purpose=="7"){
             $this->others=true;
         }else{
             $this->specified_purpose="";
@@ -148,7 +144,6 @@ class Request extends Component
     {
         if($this->others==true){
             $this->validate([
-                'selected_documents'=>'required',
                 'receiver_name'=>'required',
                 'purpose'=>'required',
                 'specified_purpose'=>'required',
@@ -159,13 +154,14 @@ class Request extends Component
                 'purpose_id'=>$this->purpose,
                 'campus_id'=>auth()->user()->information->course->campus_id,
                 'other_purpose'=>$this->specified_purpose,
+                'request_code'=>Str::random(6),
             ]);
 
-            $document=RequestModel::find($documentsOfRequest->id);
-            $document->documents()->attach($this->selected_documents);
+         
 
-            return redirect()->route('requestor-dashboard'); 
-
+            $request=RequestModel::find($documentsOfRequest->id);
+            $request->documents()->attach($this->selected_documents);
+            return redirect()->route('requestor-finalize',['id'=>$request->id]);
         }else{
             $this->validate([
                 'selected_documents'=>'required',
@@ -180,29 +176,20 @@ class Request extends Component
                 'purpose_id'=>$this->purpose,
                 'campus_id'=>auth()->user()->information->course->campus_id,
                 'other_purpose'=>$this->specified_purpose,
+                'request_code'=>Str::random(6),
             ]);
 
             $request=RequestModel::find($documentsOfRequest->id);
-            // $request->documents()->attach($this->selected_documents);
-            
-            foreach($this->selected_documents as $document){
-                if($document==$this->Authentication){
-                    $request->documents()->attach($document,[
-                        'number_of_page'=>$this->set
-                    ]);
-                }else{  
-                    $request->documents()->attach($document);
-                }
-            }
-         
-
-            return redirect()->route('requestor-dashboard'); 
+            $request->documents()->attach($this->selected_documents);
+            return redirect()->route('requestor-finalize',['id'=>$request->id]);
         }
-       
 
     
-        
-     
-
     }
+
+    public function nextStep()
+    {
+        $this->next=true;
+    }
+   
 }

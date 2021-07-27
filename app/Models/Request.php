@@ -15,7 +15,7 @@ class Request extends Model
     }
     public function documents()
     {
-        return $this->belongsToMany(Document::class,'request_documents')->withPivot('number_of_page','id','total_amount');
+        return $this->belongsToMany(Document::class,'request_documents')->withPivot('number_of_page','id','total_amount','isAuth','copies');
     }
     public function purpose(){
         return $this->belongsTo(Purpose::class);

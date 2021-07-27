@@ -16,8 +16,10 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('request_id');
-            $table->string('amount') ;
+            $table->string('amount');
+            $table->string('documentary_stamp')->nullable();
             $table->string('proof_of_payment')->nullable();
+            $table->string('preference_number')->nullable();
             $table->string('retrieval_date')->nullable();
             $table->timestamps();
         });

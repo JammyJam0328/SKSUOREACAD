@@ -1,16 +1,12 @@
 <div >
   <div class="grid space-y-4">
-    @foreach ($categories as $category)
+   
       <div class="space-y-4">
-        <div class="py-1">
-            <h1 class="text-lg font-semibold">{{ $category->name }}</h1>
-        </div>
+        
         <ul   class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
    
-          @forelse ($mycampus->documents->where('document_category_id', $category->id) as $document)
+          @forelse ($mycampus->documents as $document)
           <li 
-           
-          
           class="col-span-1 flex flex-col text-center bg-white rounded-md shadow divide-y divide-gray-200 ring-1 ring-green-700 ">
             <div class="py-1">
               @if ($document->pivot->status=="Unavailable")
@@ -23,8 +19,6 @@
               </div>
               @endif  
             </div>  
-            
-          
             <div class="flex-1 flex flex-col p-2">
                 <img class="w-32 h-32 flex-shrink-0 mx-auto " src="{{ asset('images/documents.svg') }}" alt="">
                 <h3 class="mt-1 text-gray-900 text-sm font-medium">{{ $document->name }}</h3>
@@ -32,10 +26,8 @@
                   <dt class="sr-only">Document</dt>
                   <dd class="">
                     <div>
-                     
                     </div>
-                  </dd>
-                 
+                  </dd>        
                 </dl>
               </div>
               <div class="py-1 flex items-center justify-center space-x-3">
@@ -60,7 +52,6 @@
         
         </ul>
       </div>
-    @endforeach
   </div>
 
   

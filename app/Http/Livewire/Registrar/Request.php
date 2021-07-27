@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
+use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Transaction;
@@ -54,11 +54,13 @@ class Request extends Component
         $this->countPending=RequestModel::where('status','Pending')->where('campus_id',auth()->user()->campus_id)
                          ->count();
         return view('livewire.registrar.request',[
-            'requests'=>RequestModel::where('status','like','%'.$this->tab.'%')
+            'requests'=>RequestModel::where('status','like','%'.$this->tab.'%')           
                         ->where('campus_id',auth()->user()->campus_id)
                         ->whereHas('information',function(Builder  $q){
                             $q->where('lastname','like','%'.$this->search.'%');
-                        })->paginate(10)
+                        })
+                        ->orWhere('request_code',$this->search)
+                        ->paginate(10)
         
         ]);
     }

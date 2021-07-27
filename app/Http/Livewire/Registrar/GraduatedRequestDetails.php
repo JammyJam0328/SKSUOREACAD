@@ -29,10 +29,9 @@ class GraduatedRequestDetails extends Component
     public $set_count;
     public $response;
 
-
-
+    public $isAuthAmount=15;
+    public $documentary_stamp;
     // Authentication document is 15 per set
-    public $authentication="Authentication";
     // TOR for Graduate school 75 first page and 50 for succeeding pages
     public $TOR_ID="5";
 
@@ -69,38 +68,60 @@ class GraduatedRequestDetails extends Component
         ]);
         $thisRequest=Request::where('id',$request)->first();
         $document=$thisRequest->documents()->whereDocumentId($id)->first();
-
-        // TOR FORMULA
-        if($this->page_count>1){
-            $temp = $this->page_count-1;
-            $sum=$document->amount*$temp;
-            $total=$sum+75;
+        $isAuthTotal;
+        if($document->pivot->isAuth=="yes"){
+            // TOR FORMULA
+            $isAuthTotal = $this->isAuthAmount*$document->pivot->copies;
+            if($this->page_count>1){
+                $temp = $this->page_count-1;
+                $sum=$document->amount*$temp;
+                $total=$sum+75;
+            }else{
+                $total=75;
+            }
+            // end TOR FORMULA
+            $totalAmount = $total*$document->pivot->copies;
+            $this->pageAmount=$document->pivot->update([
+                'number_of_page'=>$this->page_count,
+                'total_amount'=>$totalAmount+$isAuthTotal,
+            ]);
+            $this->page_count="";
         }else{
-            $total=75;
-        }
-        // end TOR FORMULA
 
-        $this->pageAmount=$document->pivot->update([
-            'number_of_page'=>$this->page_count,
-            'total_amount'=>$total,
-        ]);
-        $this->page_count="";
-    }  
-
-
-
-
-    public function saveSet($id,$request)
-    {
-        $thisRequest=Request::where('id',$request)->first();
-        $document=$thisRequest->documents()->whereDocumentId($id)->first();
-
-        $total=$document->pivot->number_of_page *$document->amount;
+            // TOR FORMULA
+            if($this->page_count>1){
+                $temp = $this->page_count-1;
+                $sum=$document->amount*$temp;
+                $total=$sum+75;
+            }else{
+                $total=75;
+            }
+            // end TOR FORMULA
+            $totalAmount = $total*$document->pivot->copies;
+            $this->pageAmount=$document->pivot->update([
+                'number_of_page'=>$this->page_count,
+                'total_amount'=>$totalAmount,
+            ]);
+            $this->page_count="";
             
-        $document->pivot->update([
-            'total_amount'=>$total,
-        ]);
+        }
+        
     }  
+
+
+
+
+    // public function saveSet($id,$request)
+    // {
+    //     $thisRequest=Request::where('id',$request)->first();
+    //     $document=$thisRequest->documents()->whereDocumentId($id)->first();
+
+    //     $total=$document->pivot->number_of_page *$document->amount;
+            
+    //     $document->pivot->update([
+    //         'total_amount'=>$total,
+    //     ]);
+    // }  
 
 
 
@@ -112,9 +133,20 @@ class GraduatedRequestDetails extends Component
        
         $thisRequest=Request::where('id',$request)->first();
         $document=$thisRequest->documents()->whereDocumentId($id)->first();
-        $document->pivot->update([
-            'total_amount'=>$document->amount,
-        ]);
+        
+        $isAuthTotal;
+        $totalAmount = $document->amount*$document->pivot->copies;
+
+        if ($document->pivot->isAuth=="yes") {
+            $isAuthTotal = $this->isAuthAmount*$document->pivot->copies;
+             $document->pivot->update([
+                 'total_amount'=>$isAuthTotal+$totalAmount,
+             ]);
+        }else{
+            $document->pivot->update([
+                'total_amount'=>$totalAmount,
+            ]);
+        }
     }
 
 
@@ -137,6 +169,7 @@ class GraduatedRequestDetails extends Component
             Transaction::create([
                 'request_id'=>$request->id,
                 'amount'=>$request->documents()->sum('total_amount'),
+                'documentary_stamp'=>$this->documentary_stamp,
             ]);
 
 

@@ -59,6 +59,8 @@ Route::group(['middleware'=>[
     // Route::get('/registrar/request/other-settings', [RegistrarPage::class, 'payment'])->name('registrar-payment.info');
      Route::get('/registrar/view/request/{id}', [RegistrarPage::class, 'viewRequest'])->name('registrar-view.request');
      Route::get('/registrar/view/requestor/{id}', [RegistrarPage::class, 'viewrequestor'])->name('registrar-view.requestor');
+     Route::get('/registrar/reports', [RegistrarPage::class, 'reports'])->name('registrar-reports');
+     Route::get('/registrar/print-pdf/{status}/{year}/{month}/requests', [RegistrarPage::class, 'printPDF'])->name('registrar-printPDF');
 });
 
 Route::group(['middleware'=>[
@@ -73,6 +75,7 @@ Route::group(['middleware'=>[
     Route::get('/requestor/update-information', [RequestorPage::class, 'updateinformation'])->name('requestor-update-information');
     Route::get('/requestor/information', [RequestorPage::class, 'information'])->name('requestor-information');
     Route::get('/requestor/request/details/{id}', [RequestorPage::class, 'viewrequest'])->name('requestor-viewrequest');
+    Route::get('/requestor/request/finalize/{id}', [RequestorPage::class, 'finalize'])->name('requestor-finalize');
 
 });
 

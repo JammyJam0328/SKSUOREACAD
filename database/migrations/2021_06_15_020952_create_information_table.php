@@ -20,13 +20,13 @@ class CreateInformationTable extends Migration
             $table->string('firstname');
             $table->string('middlename')->nullable();
             $table->string('lastname');
-            $table->string('sex');
-            $table->string('address');
-            $table->string('contactnumber');
-            $table->string('email');
-            $table->unsignedBigInteger('course_id');
-            $table->string('status');
-            $table->string('valid_id');
+            $table->string('sex')->nullable();
+            $table->string('address')->nullable();
+            $table->string('contactnumber')->nullable();
+            $table->string('email')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->string('status')->nullable() ;
+            $table->string('valid_id')->nullable();
             $table->timestamps();
         });
     }

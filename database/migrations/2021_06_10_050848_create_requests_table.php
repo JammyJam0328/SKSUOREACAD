@@ -20,9 +20,10 @@ class CreateRequestsTable extends Migration
             $table->unsignedBigInteger('purpose_id');
             $table->string('other_purpose')->nusllable();
             $table->unsignedBigInteger('campus_id');
-            $table->string('status')->default('Pending');
+            $table->string('status')->default('draft');
             $table->string('read')->default('no');
             $table->string('response')->nullable();
+            $table->string('request_code');
             $table->timestamps();
         });
     }

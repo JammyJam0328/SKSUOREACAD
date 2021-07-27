@@ -846,7 +846,7 @@
                                     <div class="space-y-6 lg:col-start-1 lg:col-span-2">
                                         <!-- Description list-->
                                         <section aria-labelledby="applicant-information-title">
-                                            <div class="bg-white shadow sm:rounded-lg">
+                                            <div class="bg-white border-t-2 border-blue-600 shadow sm:rounded-lg">
                                                 <div class="py-2 px-5 border-b border-gray-300">
                                                     More Information
                                                 </div>
@@ -919,7 +919,7 @@
 
                                         <!-- Comments-->
                                         <section aria-labelledby="notes-title">
-                                            <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
+                                            <div class="bg-white border-t-2 border-yellow-600 shadow sm:rounded-lg sm:overflow-hidden">
                                                 <div class="divide-y divide-gray-200">
                                                     <div class="px-4 py-2">
                                                         <h2 id="notes-title" class="text-lg font-medium text-gray-900">
@@ -936,7 +936,7 @@
                                     </div>
 
                                     <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
-                                        <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                                        <div class="bg-white border-t-2 border-green-500 px-4 py-5 shadow sm:rounded-lg sm:px-6">
                                             <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Details
                                             </h2>
 
@@ -955,8 +955,12 @@
 
                                                 </ul>
                                                 <div class="border-t border-b border-gray-200 py-5">
-                                                    Total Amount to Pay :
+                                                    Total Amount to Pay : &#8369;
                                                     {{ $PaymentReviewRequest->transaction->amount }}
+                                                </div>
+                                                <div class="border-t border-b border-gray-200 py-5">
+                                                    Documentary stamp : &#8369;
+                                                    {{ $PaymentReviewRequest->transaction->documentary_stamp }}
                                                 </div>
                                                 <div class="py-3">
                                                     <form>

@@ -42,8 +42,14 @@ class RequestorPage extends Controller
         }else{
             abort(403);
         }
-       
         
+    }
+
+    public function finalize($id)
+    {
+        return view('pages.requestor.finalize',[
+            'id'=>$id
+        ]);
     }
 
   

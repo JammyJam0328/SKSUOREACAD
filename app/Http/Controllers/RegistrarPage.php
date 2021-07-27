@@ -69,8 +69,16 @@ class RegistrarPage extends Controller
             'id'=>$id
         ]);
     }
-    // public function payment()
-    // {
-    //     return view('pages.registrar.payment-info');
-    // }
+    public function reports()
+    {
+        return view('pages.registrar.reports');
+    }
+    public function printPDF($status,$year,$month)
+    {
+        return view('pages.registrar.pdfreport',[
+            'status'=>$status,
+            'year'=>$year,
+            'month'=>$month,
+        ]);
+    }
 }

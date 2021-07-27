@@ -21,7 +21,6 @@ class Document extends Component
     public function render()
     {
         $this->mycampus=Campus::where('id',auth()->user()->campus_id)->first();
-        $this->categories=DocumentCategory::get();
         return view('livewire.registrar.document');
     }
     public function available($document_id)

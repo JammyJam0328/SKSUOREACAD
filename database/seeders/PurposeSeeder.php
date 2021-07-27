@@ -28,7 +28,13 @@ class PurposeSeeder extends Seeder
                 'description'=>'For Employment',
             ],
             [
-                'description'=>'Others',
+                'description'=>'Promotion',
+            ],
+            [
+                'description'=>'Scholarship',
+            ],
+            [
+                'description'=>'others',
             ],
         ]);
     }

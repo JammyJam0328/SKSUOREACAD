@@ -29,8 +29,7 @@ class GmailSending extends Mailable
      */
     public function build()
     {
-        
-        return $this->subject("Email from SKSU OREACAD")->view('emails.email',[
+        return $this->subject("SKSU OROAD Request Status")->markdown('emails.email',[
             'request'=>Request::where('id',$this->emailDetails['request_id'])->first()
         ]);
     }
