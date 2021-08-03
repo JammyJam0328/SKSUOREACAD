@@ -3,7 +3,7 @@
     <main x-data="{tab:'request'}" class="flex-1 overflow-y-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex">
-                <h1 class="flex-1 text-2xl font-bold text-gray-900">Dashboard</h1>
+                <h1 class="flex-1 text-2xl font-bold text-gray-900">Dashboard </h1>
 
             </div>
 
@@ -53,6 +53,12 @@
                                                 @if ($request->status == 'Pending')
                                                     <p
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                        {{ $request->status }}
+                                                    </p>
+                                                @endif
+                                                @if ($request->status == 'Cleared')
+                                                    <p
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-indigo-50 text-indigo-800">
                                                         {{ $request->status }}
                                                     </p>
                                                 @endif

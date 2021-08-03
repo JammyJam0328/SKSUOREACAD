@@ -8,12 +8,13 @@ use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
+use App\Models\Document;
+use App\Models\Notification;
+
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request;
 use App\Models\Transaction;
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
@@ -43,7 +44,6 @@ class Requestdetails extends Component
 
     public function render()
     {
-       
         $this->request=Request::where('id',$this->request_id)->first();
         $this->total_amount=$this->request->documents()->sum('total_amount');
         return view('livewire.registrar.requestdetails');
@@ -61,12 +61,13 @@ class Requestdetails extends Component
     {
         // if request(graduared) clearance is cleared then pass the request to Access Campus
        
-        $update_data=Request::find($id);
-        $update_data->update([
+        $request=Request::where('id',$id)->first();
+        $request->update([
             'read'=>'no',
             'campus_id'=>"1", //Access campus ID
             'status'=>'Cleared'
         ]);
+        event(new RequestorEvent($request->information->user->id));
         return redirect()->route('registrar-dashboard');
     }
 
@@ -88,13 +89,11 @@ class Requestdetails extends Component
         ]);
         $this->page_count="";
 
-   
     }  
 
   
      public function saveTotal($id,$request)
     {
-       
        
         $thisRequest=Request::where('id',$request)->first();
         $document=$thisRequest->documents()->whereDocumentId($id)->first();
@@ -122,6 +121,7 @@ class Requestdetails extends Component
                 'status'=>'Approved',
             ]);
 
+
             Transaction::create([
                 'request_id'=>$request->id,
                 'amount'=>$request->documents()->sum('total_amount'),
@@ -134,9 +134,15 @@ class Requestdetails extends Component
                 'status'=>'Approved',
                 'message'=>'',
             ];
+
+
     
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
             event(new RequestorEvent($request->information->user->id));
+            Notification::create([
+                'message'=>"Your request has been approved",
+                'user_id'=>$request->information->user->id,
+            ]);
             return redirect()->route('registrar-dashboard');    
         }else{
            $this->alert('error','Please check the documents');
@@ -174,14 +180,17 @@ class Requestdetails extends Component
             ];
 
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
-
+            event(new RequestorEvent($request->information->user->id));
+             Notification::create([
+                'message'=>"Your request has been denied",
+                'user_id'=>$request->information->user->id,
+            ]);
             return redirect()->route('registrar-dashboard');
       
     }
 
     public function cancelled()
     {
-
         $this->alert('info', 'Cancelled');
     }
 

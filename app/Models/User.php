@@ -19,7 +19,10 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
 
-
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 
     public function campus()
     {

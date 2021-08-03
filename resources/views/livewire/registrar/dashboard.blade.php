@@ -2,7 +2,6 @@
     <div class="w-full">
         <div class="max-w-6xl mx-auto  mb-5">
             <div class="mb-3">
-
                 <div class="w-full md:w-1/2">
                     <div class="mt-1 relative rounded-md shadow-sm">
                         <input wire:model.debounce.250ms="search" type="text" name="search" id="search"
@@ -63,9 +62,9 @@
                                         Pending Request/s
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-medium text-gray-900">
+                                        <div
+                                            class="text-lg font-bold {{ $countPending == 0 ? 'text-gray-900' : 'text-red-600' }} ">
                                             {{ $countPending }}
-
                                         </div>
                                     </dd>
                                 </dl>
@@ -91,7 +90,8 @@
                                         Unread Request/s
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-medium text-gray-900">
+                                        <div
+                                            class="text-lg font-bold {{ $countUnread == 0 ? 'text-gray-900' : 'text-red-600' }} ">
                                             {{ $countUnread }}
                                         </div>
                                     </dd>
@@ -121,7 +121,8 @@
                                         To Review
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-medium text-gray-900">
+                                        <div
+                                            class="text-lg font-bold {{ $countToReview == 0 ? 'text-gray-900' : 'text-red-600' }}">
                                             {{ $countToReview }}
                                         </div>
                                     </dd>
@@ -210,7 +211,6 @@
                                                     <div class="hidden md:block">
                                                         <div>
                                                             <p class="text-sm text-gray-900">
-
                                                                 <time>{{ $request->created_at->diffForHumans() }}</time>
                                                             </p>
                                                             <p class="mt-2 flex items-center text-sm text-gray-500">

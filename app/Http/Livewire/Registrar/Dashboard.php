@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
+use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request;
@@ -23,7 +23,12 @@ class Dashboard extends Component
 
 
     public $mycampus;
-
+    protected function getListeners()
+    {
+        return [
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => '$refresh'
+        ];
+    }
   
     public function render()
     {

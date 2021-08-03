@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('images/OREACADLogo.svg') }}">
+    <link rel="icon" href="{{ asset('images/titleIcon.png') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -123,7 +123,7 @@
         <div class="flex flex-col w-0 flex-1 overflow-hidden">
             <div class="relative z-10 flex-shrink-0 flex h-12  bg-gradient-to-r from-green-500 to-green-700 shadow">
                 <button x-on:click="sideBar=true"
-                    class="px-4 border-r border-gray-200 text-green-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    class="px-4 border-r border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
                     <span class="sr-only">Open sidebar</span>
                     <!-- Heroicon name: outline/menu-alt-2 -->
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -203,6 +203,8 @@
         </span>
     </div>
 
+
+
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
@@ -211,6 +213,8 @@
 
     <script>
         window.addEventListener('load', (event) => {
+
+
             document.getElementById('page-preloader').style.display = "none";
         });
         window.addEventListener('beforeunload', (event) => {
@@ -218,17 +222,20 @@
         });
 
         window.addEventListener('DOMContentLoaded', (event) => {
+
+
             function showNotification() {
                 const notification = new Notification("New Notification from SKSU OROAD");
             };
 
             window.Livewire.on('notify', () => {
+
                 if (Notification.permission === "granted") {
 
                     showNotification();
 
-
                 } else if (Notification.permission !== "denied") {
+
                     Notification.requestPermission().then(permission => {
                         if (permission === "granted") {
                             showNotification();
@@ -236,7 +243,9 @@
                     });
 
                 } else {
+
                     Notification.requestPermission();
+
                 };
             });
         });

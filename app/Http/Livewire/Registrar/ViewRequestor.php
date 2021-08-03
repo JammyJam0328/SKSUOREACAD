@@ -30,6 +30,7 @@ class ViewRequestor extends Component
     }
     public function viewDetails($id)
     {
+        
         $this->requestDetail=RequestModel::where('id',$id)->first();
         $this->sideDetails=true;
     }

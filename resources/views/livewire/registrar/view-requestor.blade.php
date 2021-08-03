@@ -44,7 +44,8 @@
                             @forelse ($requestor->requests->sortByDesc('created_at') as $request)
                                 <li>
                                     <button wire:click.prevent="viewDetails({{ $request->id }})"
-                                        class="block hover:bg-gray-50 w-full">
+                                        wire:loading.class="cursor-wait"
+                                        class="block hover:bg-gray-50 w-full focus:outline-none">
                                         <div class="px-4 py-4 sm:px-6">
                                             <div class="flex items-center justify-between">
                                                 <p class="text-sm font-medium text-indigo-600 truncate">
@@ -242,6 +243,10 @@
                     <div>
                         <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">
                             <div class="py-3 flex justify-between text-sm font-medium">
+                                <dt class="text-gray-500">Request Code</dt>
+                                <dd class="text-gray-900 font-bold">{{ $requestDetail->request_code }}</dd>
+                            </div>
+                            <div class="py-3 flex justify-between text-sm font-medium">
                                 <dt class="text-gray-500">Receiver name</dt>
                                 <dd class="text-gray-900">{{ $requestDetail->receivername }}</dd>
                             </div>
@@ -296,11 +301,5 @@
         </aside>
     </div>
 
-    <div wire:loading.flex
-        class="w-full h-full flex fixed items-center justify-center top-0 left-0 bg-white opacity-75 z-50">
-        <div class="grid items-center justify-center animate-bounce">
-            <img src="{{ asset('images/loading.svg') }}" class="h-32 w-32" alt="">
-            <span class="mx-auto">loading... </span>
-        </div>
-    </div>
+
 </div>

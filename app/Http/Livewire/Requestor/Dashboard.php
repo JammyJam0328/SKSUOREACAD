@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
+use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request as RequestModel;
@@ -20,7 +20,7 @@ class Dashboard extends Component
     public $drafts=[];
     public $notification = false;
     public $user_id;
-    
+ 
    
     protected function getListeners()
     {

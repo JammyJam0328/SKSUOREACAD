@@ -35,21 +35,39 @@ class RequestorPage extends Controller
     {
       
         $request=RequestModel::where('id',$id)->first();
-        if($request->information->id==auth()->user()->information->id){
-            return view('pages.requestor.view-request-details',[
-                'id'=>$id
-            ]);
+        if($request==null||$request->status == "draft"){
+           abort(403);
         }else{
-            abort(403);
+            if($request->information->id==auth()->user()->information->id){
+                return view('pages.requestor.view-request-details',[
+                    'id'=>$id
+                ]);
+            }else{
+                abort(403);
+            }
         }
+      
         
     }
 
     public function finalize($id)
     {
-        return view('pages.requestor.finalize',[
-            'id'=>$id
-        ]);
+        $request = RequestModel::where('id',$id)->first();
+        if($request==null||$request->status!= "draft"){
+           abort(403);
+        }else{
+
+            if ($request->information->id==auth()->user()->information->id) {
+                return view('pages.requestor.finalize',[
+                'id'=>$id
+                ]);
+            }else{
+                abort(403);
+            }
+
+        }
+      
+        
     }
 
   

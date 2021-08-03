@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
+use App\Models\Notification;
 use App\Models\Course;
 use App\Models\Document;
 use App\Models\DocumentCategory;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\GmailSending;
-
+use App\Events\RequestorEvent;
 use Livewire\WithPagination;
 class Request extends Component
 {
@@ -109,10 +110,13 @@ class Request extends Component
             'status'=>'Ready To Claim',
             'message'=>'',
         ];
-
         Mail::to($request->information->email)->send(new GmailSending($emailDetails));
+        event(new RequestorEvent($request->information->user->id));
+         Notification::create([
+                'message'=>"Your request is now ready to claim (".$request->request_code.")",
+                'user_id'=>$request->information->user->id,
+            ]);
         $this->paymentReview=false;
-
     }
     public function cancelRTC()
     {
@@ -149,9 +153,8 @@ class Request extends Component
             ];
 
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
+            event(new RequestorEvent($request->information->user->id));
             $this->paymentReview=false;
-          
-      
     }
 
     public function cancelDeny()

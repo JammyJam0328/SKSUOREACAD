@@ -19,7 +19,6 @@ class ViewRequestDetails extends Component
   
     public function render()
     {
-
         $this->request=Request::where('id',$this->request_id)->first();
         $this->total_amount=$this->request->documents()->sum('total_amount');
         return view('livewire.registrar.view-request-details');

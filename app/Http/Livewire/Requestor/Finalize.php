@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Requestor;
 
 use Livewire\Component;
+use App\Events\NewRequest;
 use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
@@ -65,6 +66,7 @@ class Finalize extends Component
         $request->update([
             'status'=>'Pending'
         ]);
+        event(new NewRequest($request->campus_id));
         return redirect()->route('requestor-dashboard');
     }
 }

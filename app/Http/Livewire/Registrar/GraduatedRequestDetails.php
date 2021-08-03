@@ -3,15 +3,18 @@
 namespace App\Http\Livewire\Registrar;
 
 use Livewire\Component;
+use App\Events\RequestorEvent;
 use App\Models\User;
 use App\Models\Information;
 use App\Models\Campus;
 use App\Models\Course;
-use App\ModelsDocument;
+use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request;
 use App\Models\Transaction;
+use App\Models\Notification;
+
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
@@ -180,9 +183,12 @@ class GraduatedRequestDetails extends Component
                 'status'=>'Approved',
                 'message'=>'Please log in to your account and proceed to payments'
             ];
-
+            event(new RequestorEvent($request->information->user->id));
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
-
+            Notification::create([
+                'message'=>"Your request has been approved",
+                'user_id'=>$request->information->user->id,
+            ]);
             return redirect()->route('registrar-graduated');
         }else{
            $this->alert('error','Please check the documents');
@@ -223,9 +229,13 @@ class GraduatedRequestDetails extends Component
                 'status'=>'Denied',
                 'message'=>'',
             ];
-
+            event(new RequestorEvent($request->information->user->id));
             Mail::to($request->information->email)->send(new GmailSending($emailDetails));
-
+            
+            Notification::create([
+                'message'=>"Your request has been approved",
+                'user_id'=>$request->information->user->id,
+            ]);
             return redirect()->route('registrar-graduated');
       
     }

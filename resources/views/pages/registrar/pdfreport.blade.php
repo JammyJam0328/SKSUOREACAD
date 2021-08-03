@@ -25,8 +25,8 @@
 
         @page {
             size: auto;
-            margin-top: 0mm;
-            margin-bottom: 0mm;
+            margin-top: 5mm;
+            margin-bottom: 3mm;
         }
 
     </style>

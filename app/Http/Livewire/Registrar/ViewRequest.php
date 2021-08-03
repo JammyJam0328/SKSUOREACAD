@@ -12,6 +12,7 @@ use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request as RequestModel;
 use App\Models\Transaction;
+use App\Events\RequestorEvent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,7 @@ class ViewRequest extends Component
         $request->update([
             'status'=>"Claimed"
         ]);
-        
+         event(new RequestorEvent($request->information->user->id));
         $this->alert('success','Claimed !');
     }
 }
