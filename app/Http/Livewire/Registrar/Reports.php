@@ -17,42 +17,25 @@ class Reports extends Component
 {
     public $status="";
     public $month;
-    public $yearSelect;
-    public $monthSelect;
+    public $startDate;
+    public $endDate;
 
     public $years=[];
-    public $months=[
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-    ];
-
+  
     public $monthStart=1;
 
     public function render()
     {
         return view('livewire.registrar.reports',[
-            'requests'=>Request::where('campus_id',auth()->user()->campus_id)
-                        ->where('status','like','%'.$this->status."%")
-                        ->whereYear('created_at',$this->yearSelect)
-                        ->whereMonth('created_at',$this->monthSelect)->get()
+            'requests'=>Request::where('campus_id',auth()->user()->campus_id)->where('status','like','%'.$this->status.'%')
+                    ->whereBetween('created_at', [$this->startDate, $this->endDate])->get()     
         ]);
     }
     public function mount(){
 
-        $this->years=range(2021, 2050);
-        $yearRange = 10;
-        $this->yearSelect = date('Y');
-        $this->monthSelect = date('m');
+        // $yearRange = 10;
+        // $this->yearSelect = date('Y');
+        // $this->monthSelect = date('m');
         
     }
     public function printPDF()
@@ -62,8 +45,8 @@ class Reports extends Component
         }
         return redirect()->route('registrar-printPDF',[
             'status'=>$this->status,
-            'year'=>$this->yearSelect,
-            'month'=>$this->monthSelect,
+            'startDate'=>$this->startDate,
+            'endDate'=>$this->endDate,
         ]);
     }
 }

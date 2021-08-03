@@ -24,8 +24,8 @@
         }
 
         @page {
-            size: auto;
-            margin-top: 5mm;
+            size: 8.5in, 14in;
+            margin-top: 0mm;
             margin-bottom: 3mm;
         }
 
@@ -36,8 +36,8 @@
 <body>
     @livewire('registrar.printpdf',[
     'status'=>$status,
-    'year'=>$year,
-    'month'=>$month,
+    'startDate'=>$startDate,
+    'endDate'=>$endDate,
     ])
     @livewireScripts
     <script>

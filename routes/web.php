@@ -60,7 +60,7 @@ Route::group(['middleware'=>[
      Route::get('/registrar/view/request/{id}', [RegistrarPage::class, 'viewRequest'])->name('registrar-view.request');
      Route::get('/registrar/view/requestor/{id}', [RegistrarPage::class, 'viewrequestor'])->name('registrar-view.requestor');
      Route::get('/registrar/reports', [RegistrarPage::class, 'reports'])->name('registrar-reports');
-     Route::get('/registrar/print-pdf/{status}/{year}/{month}/requests', [RegistrarPage::class, 'printPDF'])->name('registrar-printPDF');
+     Route::get('/registrar/print-pdf/{status}/{startDate}/{endDate}/requests', [RegistrarPage::class, 'printPDF'])->name('registrar-printPDF');
 });
 
 Route::group(['middleware'=>[

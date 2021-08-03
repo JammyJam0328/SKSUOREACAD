@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Request as RequestModel;
 class RegistrarPage extends Controller
 {
@@ -65,20 +66,30 @@ class RegistrarPage extends Controller
 
     public function viewrequestor($id)
     {
-        return view('pages.registrar.view-requestor',[
-            'id'=>$id
-        ]);
+       
+            $requestor=User::where('id',$id)->first();
+            if($requestor){
+                return view('pages.registrar.view-requestor',[
+                    'id'=>$id
+                ]);
+            }else{
+                abort(403);
+            }
+        
+
+      
     }
     public function reports()
     {
         return view('pages.registrar.reports');
     }
-    public function printPDF($status,$year,$month)
+    public function printPDF($status,$startDate,$endDate)
     {
+        
         return view('pages.registrar.pdfreport',[
             'status'=>$status,
-            'year'=>$year,
-            'month'=>$month,
+            'startDate'=>$startDate,
+            'endDate'=>$endDate,
         ]);
     }
 }

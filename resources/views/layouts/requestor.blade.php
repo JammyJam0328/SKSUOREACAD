@@ -212,17 +212,12 @@
     <x-livewire-alert::scripts />
 
     <script>
-        window.addEventListener('load', (event) => {
-
-
-            document.getElementById('page-preloader').style.display = "none";
-        });
         window.addEventListener('beforeunload', (event) => {
             document.getElementById('page-preloader').style.display = "flex";
         });
 
         window.addEventListener('DOMContentLoaded', (event) => {
-
+            document.getElementById('page-preloader').style.display = "none";
 
             function showNotification() {
                 const notification = new Notification("New Notification from SKSU OROAD");

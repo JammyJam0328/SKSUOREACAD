@@ -269,7 +269,7 @@
     <x-livewire-alert::scripts />
 
     <script>
-        window.addEventListener('load', (event) => {
+        window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('page-preloader').style.display = "none";
         });
         window.addEventListener('beforeunload', (event) => {

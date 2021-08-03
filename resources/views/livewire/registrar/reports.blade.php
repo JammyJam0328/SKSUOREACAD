@@ -17,22 +17,24 @@
                 </select>
             </div>
             <div>
-                <label for="location" class="block text-sm font-medium text-gray-700">Year</label>
-                <select wire:model="yearSelect" id="location" name="location"
-                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                    @foreach ($years as $year)
-                        <option value="{{ $year }}">{{ $year }}</option>
-                    @endforeach
-                </select>
+                <div class="flex justify-between">
+                    <label for="email" class="block text-sm font-medium text-gray-700">From</label>
+                </div>
+                <div class="mt-1">
+                    <input wire:model="startDate" type="date" name="date" id="date"
+                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                </div>
+
             </div>
             <div>
-                <label for="location" class="block text-sm font-medium text-gray-700">Month</label>
-                <select wire:model="monthSelect" id="location" name="location"
-                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                    @foreach ($months as $month)
-                        <option value="0{{ $monthStart++ }}">{{ $month }}</option>
-                    @endforeach
-                </select>
+                <div class="flex justify-between">
+                    <label for="email" class="block text-sm font-medium text-gray-700">To</label>
+                </div>
+                <div class="mt-1">
+                    <input wire:model="endDate" type="date" name="date" id="date"
+                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                </div>
+
             </div>
         </div>
         <button wire:click.prevent="printPDF()" type="button"
@@ -71,10 +73,7 @@
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Date
                                     </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Claim Stub
-                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
@@ -98,9 +97,7 @@
                                             {{ date('M d, Y', strtotime($request->created_at)) }}
 
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $request->request_code }}
-                                        </td>
+
                                     </tr>
                                 @empty
 
@@ -113,6 +110,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

@@ -266,8 +266,6 @@
                                 <dd class="text-gray-900">
                                     {{ date('M d, Y', strtotime($requestDetail->created_at)) }}</dd>
                             </div>
-
-
                         </dl>
                     </div>
 

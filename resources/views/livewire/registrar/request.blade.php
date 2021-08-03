@@ -919,7 +919,8 @@
 
                                         <!-- Comments-->
                                         <section aria-labelledby="notes-title">
-                                            <div class="bg-white border-t-2 border-yellow-600 shadow sm:rounded-lg sm:overflow-hidden">
+                                            <div
+                                                class="bg-white border-t-2 border-yellow-600 shadow sm:rounded-lg sm:overflow-hidden">
                                                 <div class="divide-y divide-gray-200">
                                                     <div class="px-4 py-2">
                                                         <h2 id="notes-title" class="text-lg font-medium text-gray-900">
@@ -936,7 +937,8 @@
                                     </div>
 
                                     <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
-                                        <div class="bg-white border-t-2 border-green-500 px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                                        <div
+                                            class="bg-white border-t-2 border-green-500 px-4 py-5 shadow sm:rounded-lg sm:px-6">
                                             <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Details
                                             </h2>
 

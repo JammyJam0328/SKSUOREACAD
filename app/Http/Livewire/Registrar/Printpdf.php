@@ -18,21 +18,19 @@ class Printpdf extends Component
 {
     public $requests=[];
     public $status;
-    public $year;
-    public $month;
+    public $startDate;
+    public $endDate;
 
     public function render()
     {
         
-        $this->requests=Request::where('campus_id',auth()->user()->campus_id)
-                        ->where('status','like','%'.$this->status.'%')
-                        ->whereYear('created_at',$this->year)
-                        ->whereMonth('created_at',$this->month)->get();
+        $this->requests=Request::where('campus_id',auth()->user()->campus_id)->where('status','like','%'.$this->status.'%')
+                    ->whereBetween('created_at', [$this->startDate, $this->endDate])->get();
         return view('livewire.registrar.printpdf');
-        dd($this->requests);
+        
     }
 
-    public function mount($status,$year,$month){
+    public function mount($status,$startDate,$endDate){
  
         if($status=="All"){
             $this->status="";
@@ -40,8 +38,8 @@ class Printpdf extends Component
             $this->status=$status;
         }
       
-       $this->year=$year;
-       $this->month=$month;
+       $this->startDate=$startDate;
+       $this->endDate=$endDate;
 
     }
   
