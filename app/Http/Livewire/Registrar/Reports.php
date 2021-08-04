@@ -40,7 +40,8 @@ class Reports extends Component
     }
     public function printPDF()
     {
-        if($this->status==""){
+        if ($this->startDate!=""&&$this->endDate!="") {
+               if($this->status==""){
             $this->status="All";
         }
         return redirect()->route('registrar-printPDF',[
@@ -48,5 +49,7 @@ class Reports extends Component
             'startDate'=>$this->startDate,
             'endDate'=>$this->endDate,
         ]);
+        }
+     
     }
 }

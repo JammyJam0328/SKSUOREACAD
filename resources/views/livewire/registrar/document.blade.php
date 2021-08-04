@@ -1,11 +1,30 @@
 <div>
     <div class="grid space-y-4">
+        <div class="py-2">
+            <div>
 
+                <div class="mt-1 relative w-1/3 rounded-md shadow-sm">
+                    <input wire:model.lazy="search" type="text" name="search" id="search"
+                        class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
+                        placeholder="Search Document">
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <!-- Heroicon name: solid/question-mark-circle -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div class="space-y-4">
 
             <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
 
-                @forelse ($mycampus->documents as $document)
+                @forelse ($documents  as $document)
                     <li
                         class="col-span-1 flex flex-col text-center bg-white rounded-md shadow divide-y divide-gray-200 ring-1 ring-green-700 ">
                         <div class="py-1">

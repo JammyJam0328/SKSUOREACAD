@@ -26,6 +26,9 @@ class Printpdf extends Component
         
         $this->requests=Request::where('campus_id',auth()->user()->campus_id)->where('status','like','%'.$this->status.'%')
                     ->whereBetween('created_at', [$this->startDate, $this->endDate])->get();
+                    if (!$this->requests) {
+                        abort(403);
+                    }
         return view('livewire.registrar.printpdf');
         
     }

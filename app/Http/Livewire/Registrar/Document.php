@@ -6,14 +6,13 @@ use Livewire\Component;
 use App\Models\Document as DocumentModel;
 use App\Models\Campus;
 use App\Models\DocumentCategory;
-
+use Illuminate\Database\Eloquent\Builder;
 
 class Document extends Component
 {
-    public $documents=[];
     public $mycampus=[];
     public $categories=[];
-
+    public $search;
  
 
 
@@ -21,7 +20,11 @@ class Document extends Component
     public function render()
     {
         $this->mycampus=Campus::where('id',auth()->user()->campus_id)->first();
-        return view('livewire.registrar.document');
+        return view('livewire.registrar.document',[
+            'documents' =>$this->mycampus->documents()->where('name','like','%'.$this->search.'%')->get()
+                      
+                        
+        ]);
     }
     public function available($document_id)
     {

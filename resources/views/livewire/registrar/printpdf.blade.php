@@ -32,19 +32,19 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Document/s
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Receiver
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Date
                                     </th>
 
@@ -53,18 +53,18 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($requests as $request)
                                     <tr class="">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {{ $request->information->firstname . ' ' . $request->information->middlename . ' ' . $request->information->lastname }}
                                         </td>
-                                        <td class="px-6 py-4 grid whitespace-nowrap text-sm text-gray-500">
+                                        <td class="px-4 py-4 grid whitespace-nowrap text-sm text-gray-500">
                                             @foreach ($request->documents as $document)
                                                 <span class="my-auto">{{ $document->name }}</span>
                                             @endforeach
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $request->receivername }}
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ date('M d', strtotime($request->created_at)) }}
                                         </td>
                                     </tr>
