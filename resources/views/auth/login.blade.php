@@ -173,7 +173,7 @@
         </div>
     </div> --}}
 
-    <div class="relative bg-gradient-to-r from-green-100 to-green-600 overflow-visible h-screen">
+    <div class="bg-gradient-to-r from-green-100 to-green-600 overflow-y-scroll h-full">
         <div class="hidden md:flex items-center justify-start space-x-3 py-5 px-10">
             <div>
                 <img src="{{ asset('images/sksu1.png') }}" class="h-14 w-auto" alt="">
@@ -201,7 +201,8 @@
                             </div>
                         </div>
                         <div class="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
-                            <div class="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
+                            <div
+                                class="shadow-md bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
                                 <div class="px-4 py-8 sm:px-10">
                                     <div class="sm:mx-auto sm:w-full sm:max-w-md">
                                         <img class="mx-auto h-14 w-auto" src="{{ asset('images/OREACADLogo.svg') }}"

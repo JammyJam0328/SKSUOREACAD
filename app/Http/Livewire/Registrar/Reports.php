@@ -41,14 +41,14 @@ class Reports extends Component
     public function printPDF()
     {
         if ($this->startDate!=""&&$this->endDate!="") {
-               if($this->status==""){
-            $this->status="All";
-        }
-        return redirect()->route('registrar-printPDF',[
-            'status'=>$this->status,
-            'startDate'=>$this->startDate,
-            'endDate'=>$this->endDate,
-        ]);
+            if($this->status==""){
+                $this->status="All";
+             }
+            return redirect()->route('registrar-printPDF',[
+                'status'=>$this->status,
+                'startDate'=>$this->startDate,
+                'endDate'=>$this->endDate,
+            ]);
         }
      
     }

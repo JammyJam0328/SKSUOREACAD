@@ -28,9 +28,10 @@
 </head>
 
 <body>
-    {{ $slot }}
+    <div class="h-screen">
+        {{ $slot }}
 
-
+    </div>
 
     @livewireScripts
 </body>

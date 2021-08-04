@@ -44,6 +44,7 @@ Route::group(['middleware'=>[
 
 
 
+
 Route::group(['middleware'=>[
     'auth:sanctum',
     'verified',
