@@ -66,25 +66,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div
-                                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                    Document Category
-                                </label>
-                                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                                    <select wire:model.defer="category" id="country" name="country"
-                                        autocomplete="country"
-                                        class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                        <option value=""></option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category')
-                                        <span class="text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -164,25 +146,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div
-                                class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-                                <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                    Document Category
-                                </label>
-                                <div class="mt-1 sm:mt-0 sm:col-span-2">
-                                    <select wire:model.defer="ecategory" id="country" name="country"
-                                        autocomplete="country"
-                                        class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                        <option value=""></option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('ecategory')
-                                        <span class="text-red-500">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -216,10 +180,7 @@
                                     class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
                                 </th>
-                                <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Category
-                                </th>
+
                                 <th
                                     class="hidden px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:block">
                                     Amount
@@ -237,9 +198,7 @@
                                     <td class="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-500">
                                         {{ $document->name }}
                                     </td>
-                                    <td class="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-500">
-                                        {{ $document->document_category->name }}
-                                    </td>
+
                                     <td class="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-500">
                                         {{ $document->amount }}
                                     </td>

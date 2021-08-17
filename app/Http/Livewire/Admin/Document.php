@@ -44,7 +44,7 @@ class Document extends Component
 
         return view('livewire.admin.document',[
             'documents'=>DocumentModel::paginate(10),
-            'categories'=>DocumentCategory::get()
+           
         ]);
     }
 
@@ -53,13 +53,11 @@ class Document extends Component
         $this->validate([
             'name'=>'required',
             'amount'=>'required|nullable',
-            'category'=>'required',
         ]);
 
         $campus_document=DocumentModel::create([
             'name'=>$this->name,
             'amount'=>$this->amount,
-            'document_category_id'=>$this->category,
             'other_description'=>$this->other_description,
         ]);
 
@@ -69,7 +67,6 @@ class Document extends Component
         };
 
         $this->name="";
-        $this->category="";
         $this->other_description="";
         $this->amount="";
 
@@ -82,7 +79,6 @@ class Document extends Component
         $document=DocumentModel::where('id',$id)->first();
         $this->document_id=$document->id;
         $this->ename=$document->name;
-        $this->ecategory=$document->document_category_id;
         $this->eother_description=$document->other_description;
         $this->eamount=$document->amount;
         $this->mode="edit";
@@ -94,7 +90,6 @@ class Document extends Component
         $this->validate([
             'ename'=>'required',
             'eamount'=>'required|nullable',
-            'ecategory'=>'required',
         ]);
 
         $update_data=DocumentModel::find($this->document_id);
@@ -103,13 +98,11 @@ class Document extends Component
         $update_data->update([
             'name'=>$this->ename,
             'amount'=>$this->eamount,
-            'document_category_id'=>$this->ecategory,
             'other_description'=>$this->eother_description,
 
         ]);
 
         $this->ename="";
-        $this->ecategory="";
         $this->eother_description="";
         $this->eamount="";
 
