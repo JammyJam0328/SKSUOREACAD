@@ -3,17 +3,21 @@
 namespace App\Http\Livewire\Registrar;
 
 use Livewire\Component;
-use App\Models\User;
-use App\Models\Information;
-use App\Models\Campus;
-use App\Models\Course;
-use App\ModelsDocument;
-use App\Models\DocumentCategory;
-use App\Models\Purpose;
 use App\Models\Request;
 use Illuminate\Database\Eloquent\Builder;
 class Graduuated extends Component
 {
+
+      protected function getListeners()
+    {
+        return [
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+        ];
+    }
+    public function notify()
+    {
+        $this->emit('notify');
+    }
     public function render()
     {
         return view('livewire.registrar.graduuated',[

@@ -24,3 +24,7 @@ Broadcast::channel('requestor.{id}', function ($user,$id) {
 Broadcast::channel('new-request.{id}', function ($user,$id) {
    return (int) $user->campus_id === (int) $id;
 });
+
+Broadcast::channel('graduate.{id}', function ($user,$id) {
+   return (int) $user->campus_id === (int) $id;
+});

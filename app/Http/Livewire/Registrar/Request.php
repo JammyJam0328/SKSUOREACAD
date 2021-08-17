@@ -43,6 +43,18 @@ class Request extends Component
 
     use WithPagination;
 
+
+      protected function getListeners()
+    {
+        return [
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+        ];
+    }
+ public function notify()
+    {
+        $this->emit('notify');
+    }
+
     public function render()
     {
 

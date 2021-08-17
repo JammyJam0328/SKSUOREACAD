@@ -34,7 +34,7 @@ class PurposeSeeder extends Seeder
                 'description'=>'Scholarship',
             ],
             [
-                'description'=>'others',
+                'description'=>'Others',
             ],
         ]);
     }

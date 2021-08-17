@@ -42,9 +42,9 @@ class UserNotification extends Component
                         'read'=>'yes',
                     ]);
         
-        
 
     }
+    
 
   
  

@@ -10,6 +10,8 @@ use App\Models\Campus;
 use App\Models\Course;
 use App\Models\Document;
 use App\Models\Notification;
+use App\Events\NewRequest;
+use App\Events\Graduates;
 
 use App\Models\DocumentCategory;
 use App\Models\Purpose;
@@ -42,6 +44,17 @@ class Requestdetails extends Component
     
     ];
 
+      protected function getListeners()
+    {
+        return [
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+        ];
+    }
+ public function notify()
+    {
+        $this->emit('notify');
+    }
+
     public function render()
     {
         $this->request=Request::where('id',$this->request_id)->first();
@@ -68,6 +81,7 @@ class Requestdetails extends Component
             'status'=>'Cleared'
         ]);
         event(new RequestorEvent($request->information->user->id));
+        event(new Graduates($request->campus_id));
         return redirect()->route('registrar-dashboard');
     }
 

@@ -18,6 +18,17 @@ class ViewRequestor extends Component
     public $requestDetail;
 
     public $sideDetails=false;
+
+      protected function getListeners()
+    {
+        return [
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+        ];
+    }
+ public function notify()
+    {
+        $this->emit('notify');
+    }
     public function render()
     {
         return view('livewire.registrar.view-requestor',[

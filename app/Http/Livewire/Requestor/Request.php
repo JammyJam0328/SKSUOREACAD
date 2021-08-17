@@ -154,7 +154,7 @@ class Request extends Component
                 'purpose_id'=>$this->purpose,
                 'campus_id'=>auth()->user()->information->course->campus_id,
                 'other_purpose'=>$this->specified_purpose,
-                'request_code'=>Str::random(6),
+                'request_code'=>'SKSU-'.Str::random(4),
             ]);
 
          
@@ -176,7 +176,7 @@ class Request extends Component
                 'purpose_id'=>$this->purpose,
                 'campus_id'=>auth()->user()->information->course->campus_id,
                 'other_purpose'=>$this->specified_purpose,
-                'request_code'=>Str::random(6),
+                'request_code'=>'SKSU-'.Str::random(4),
             ]);
 
             $request=RequestModel::find($documentsOfRequest->id);

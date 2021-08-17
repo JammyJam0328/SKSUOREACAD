@@ -23,10 +23,15 @@
             display: none
         }
 
+        @media print {
+            #break-after {
+                page-break-after: always !important;
+            }
+        }
+
         @page {
-            size: 8.5in, 14in;
-            margin-top: 0mm;
-            margin-bottom: 3mm;
+            margin-top: 2mm !important;
+            margin-bottom: 5mm !important;
         }
 
     </style>

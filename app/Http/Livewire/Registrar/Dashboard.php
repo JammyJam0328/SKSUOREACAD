@@ -26,9 +26,14 @@ class Dashboard extends Component
     protected function getListeners()
     {
         return [
-            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => '$refresh'
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
         ];
     }
+ public function notify()
+    {
+        $this->emit('notify');
+    }
+
   
     public function render()
     {
@@ -54,6 +59,7 @@ class Dashboard extends Component
             'requests'=>Request::where('campus_id',$this->mycampus)->where('status','Pending')->orderBy('created_at','DESC')->get()
         ]);
     }
+
 
     
 }
