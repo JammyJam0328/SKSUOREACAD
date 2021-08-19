@@ -7,21 +7,29 @@ use App\Models\User;
 use App\Models\Request as RequestModel;
 class RegistrarPage extends Controller
 {
+    public $pageName="";
     public function dashboard()
     {
+        $this->pageName="Dashboard";
         return view('pages.registrar.dashboard');
+        
     }
     public function request()
     {
+        $this->pageName="All Request";
+
         return view('pages.registrar.request');
     }
 
     public function document()
     {
+        $this->pageName="Document";
+
         return view('pages.registrar.document');
     }
     public function requestdetails($id)
     {
+        $this->pageName="RequestDetails";
         if($id==null){
             return back();
         }else{

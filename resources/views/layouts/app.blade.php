@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="Sultan Kudarat State University, SKSU">
+    <meta name="description" content="SKSU Online Request of Academic Records">
     <link rel="icon" href="{{ asset('images/titleIcon.png') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
