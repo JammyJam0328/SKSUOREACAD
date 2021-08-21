@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="theme-color" content="#27A77E">
     <meta name="keywords" content="Sultan Kudarat State University">
     <meta name="description" content="SKSU Online Request of Academic Records">
     <link rel="icon" href="{{ asset('images/titleIcon.png') }}">
