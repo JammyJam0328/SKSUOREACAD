@@ -142,28 +142,33 @@
                             <div class="px-4 py-5 sm:px-6">
                                 <h2 id="notes-title" class="text-lg font-medium text-gray-900">Request documents</h2>
                             </div>
-                            <div class="px-4 py-6 sm:px-6">
+                            <div class="px-4 pb-6 sm:px-6">
+                                <div class="mb-2 py-2 px-2 shadow-md">
+                                    <p>Request Code : {{ $request->request_code }}</p>
+                                </div>
                                 <ul class="space-y-8">
                                     @foreach ($request->documents as $document)
-                                    <li>
-                                        <div class="flex space-x-3">
-                                            <div class="flex-shrink-0">
-        
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path
-                                                        d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <div class="text-sm">
-                                                    <a href="#" class="font-medium text-gray-900">{{ $document->name }}</a>
+                                        <li>
+                                            <div class="flex space-x-3">
+                                                <div class="flex-shrink-0">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="h-5 w-5 text-green-500" viewBox="0 0 20 20"
+                                                        fill="currentColor">
+                                                        <path
+                                                            d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                                                    </svg>
                                                 </div>
-                                                <div class="mt-1 text-sm text-gray-700 space-y-1">
-        
-        
-        
-        
+                                                <div>
+                                                    <div class="text-sm">
+                                                        <a href="#"
+                                                            class="font-medium text-gray-900">{{ $document->name }}</a>
+                                                    </div>
+                                                    <div class="mt-1 text-sm text-gray-700 space-y-1">
+
+
+
+
                                                         @if ($document->id == $TOR_ID)
                                                             <p> &#8369; ({{ $document->other_description }})</p>
                                                             <p>Copies : {{ $document->pivot->copies }}
@@ -172,11 +177,12 @@
                                                             <div>
                                                                 <div>
                                                                     @if ($document->pivot->number_of_page > 0)
-                                                                        <p wire:loading.class="animate-pulse text-green-500">
+                                                                        <p
+                                                                            wire:loading.class="animate-pulse text-green-500">
                                                                             Page :
                                                                             {{ $document->pivot->number_of_page }}
                                                                         </p>
-        
+
                                                                     @endif
                                                                 </div>
                                                                 <div>
@@ -192,13 +198,13 @@
                                                                             </svg>
                                                                         </p>
                                                                         </p>
-        
+
                                                                     @endif
                                                                 </div>
-        
+
                                                                 <div class="mt-1 flex items-center space-x-1">
-                                                                    <input wire:model.debounce.250ms="page_count" type="number"
-                                                                        name="npage" id="npage"
+                                                                    <input wire:model.debounce.250ms="page_count"
+                                                                        type="number" name="npage" id="npage"
                                                                         class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                                                         placeholder="Pages">
                                                                     <button
@@ -210,7 +216,7 @@
                                                                 @enderror
                                                             </div>
                                                         @endif
-        
+
                                                         @if ($document->id != $TOR_ID)
                                                             <p>&#8369; {{ $document->amount }}</p>
                                                             <p>Copies : {{ $document->pivot->copies }}
@@ -220,8 +226,9 @@
                                                                 <button
                                                                     wire:click.prevent="saveTotal({{ $document->id }},{{ $request->id }})"
                                                                     class="p-1 shadow rounded-md bg-yellow-500 focus:outline-none text-white hover:bg-yellow-400"><svg
-                                                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                                        viewBox="0 0 20 20" fill="currentColor">
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        class="h-5 w-5" viewBox="0 0 20 20"
+                                                                        fill="currentColor">
                                                                         <path fill-rule="evenodd"
                                                                             d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                                             clip-rule="evenodd" />
@@ -236,11 +243,11 @@
                                                                 </svg>
                                                             @endif
                                                         @endif
-        
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
 
 
@@ -253,7 +260,7 @@
                                     <span>{{ $total_amount }}</span>
                                 </div>
                                 <div>
-                                    <label for="total_amount">Documentary_stamp</label>
+                                    <label for="total_amount">Documentary stamp</label>
                                     <div class="flex items-center space-x-4">
                                         <input wire:model="documentary_stamp" type="number" name="documentary_stamp"
                                             id="documentary_stamp"

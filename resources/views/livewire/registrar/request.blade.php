@@ -1,4 +1,4 @@
-<div x-data="{tab:@entangle('tab'),paymentReview:@entangle('paymentReview'),moreInfo:false}">
+<div x-data="{tab:$persist(@entangle('tab')),paymentReview:@entangle('paymentReview'),moreInfo:false}">
     <div class="flex gap-2">
         <div class="w-1/4">
             <!-- This example requires Tailwind CSS v2.0+ -->
@@ -131,7 +131,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter ">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -165,7 +165,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -261,7 +261,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -295,7 +295,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -351,7 +351,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -385,7 +385,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -438,7 +438,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -472,7 +472,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -525,7 +525,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -559,7 +559,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -608,7 +608,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -642,7 +642,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -698,7 +698,7 @@
                                     <div class="mt-1 relative rounded-md shadow-sm">
                                         <input wire:model.lazy="search" type="text" name="search" id="search"
                                             class="focus:ring-green-500 focus:border-green-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Search ...">
+                                            placeholder="Search + press tab or enter key">
                                         <div
                                             class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <!-- Heroicon name: solid/question-mark-circle -->
@@ -732,7 +732,7 @@
                                                     {{ $request->information->lastname }}
                                                 </p>
                                                 <p class="text-sm text-gray-500 truncate">
-                                                    {{ $request->information->email }}
+                                                    Request Code : {{ $request->request_code }}
                                                 </p>
                                             </div>
                                             <div>
@@ -794,14 +794,14 @@
                                 class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <span class="sr-only">Close</span>
                                 <!-- Heroicon name: outline/x -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" aria-hidden="true">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
-                        <div class="">
+                        <div class="___class_+?197___">
                             <main class="py-5">
                                 <!-- Page header -->
                                 <div
@@ -946,8 +946,9 @@
                                                 <ul>
                                                     @foreach ($PaymentReviewRequest->documents as $document)
                                                         <li class="flex items-center space-x-2">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                                viewBox="0 0 20 20" fill="currentColor">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="h-5 w-5" viewBox="0 0 20 20"
+                                                                fill="currentColor">
                                                                 <path
                                                                     d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
                                                             </svg>
@@ -976,7 +977,8 @@
                                                                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                                                     placeholder="you@example.com">
                                                                 @error('retrieval_date')
-                                                                    <span class="text-red-600">{{ $message }}</span>
+                                                                    <span
+                                                                        class="text-red-600">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>

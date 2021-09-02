@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Request as RequestModel;
+use App\Models\Information;
 class RegistrarPage extends Controller
 {
     public function dashboard()
@@ -30,7 +31,7 @@ class RegistrarPage extends Controller
             return back();
         }else{
             $myrequest=RequestModel::where('id',$id)->first();
-            if($myrequest){
+            if($myrequest && $myrequest->campus_id==auth()->user()->campus_id){
                 return view('pages.registrar.requestdetails',[
                     'id'=>$id
                 ]);
@@ -46,7 +47,7 @@ class RegistrarPage extends Controller
             return back();
         }else{
             $myrequest=RequestModel::where('id',$id)->first();
-            if($myrequest){
+            if($myrequest&& $myrequest->information->status=="Graduated" && $myrequest->status=="Cleared" && $myrequest->campus_id==auth()->user()->campus_id){
                 return view('pages.registrar.graduate-request-details',[
                     'id'=>$id
                 ]);
@@ -63,16 +64,28 @@ class RegistrarPage extends Controller
 
     public function viewRequest($id)
     {
-        return view('pages.registrar.view-request',[
-            'id'=>$id
-        ]);
+
+        if($id==null){
+            return back();
+        }else{
+            $myrequest=RequestModel::where('id',$id)->first();
+            if($myrequest && $myrequest->campus_id==auth()->user()->campus_id){
+                return view('pages.registrar.view-request',[
+                    'id'=>$id
+                ]);
+            }else{
+                abort(403);
+            }
+        }
+       
     }
 
     public function viewrequestor($id)
     {
        
-            $requestor=User::where('id',$id)->first();
-            if($requestor){
+            $requestor=Information::where('id',$id)->first();
+         
+            if($requestor->course->campus_id==auth()->user()->campus_id){
                 return view('pages.registrar.view-requestor',[
                     'id'=>$id
                 ]);

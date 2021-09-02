@@ -21,6 +21,7 @@
         "tailwindcss": "^2.0.1"
     },
     "dependencies": {
+        "@alpinejs/persist": "^3.2.4",
         "alpinejs": "^3.2.1"
     }
 }

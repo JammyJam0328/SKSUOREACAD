@@ -37,12 +37,11 @@ class Dashboard extends Component
   
     public function render()
     {
-        $this->mycampus=auth()->user()->campus_id;
+       
         if($this->search){
-            $this->requestors=Information::where('lastname','like','%'.$this->search.'%')->orWhere('studentnumber','like','%'.$this->search.'%')
-            ->whereHas('requests', function (Builder $query) {
-                $query->where('campus_id', $this->mycampus);
-            })->get();
+            $this->requestors=Information::whereHas('course', function (Builder $query) {
+                $query->where('campus_id', auth()->user()->campus_id);
+            })->where('lastname','like','%'.$this->search.'%')->orWhere('studentnumber','like','%'.$this->search.'%')->get();
            
         }
         $this->countPending=Request::where('status','Pending')->where('campus_id',$this->mycampus)
