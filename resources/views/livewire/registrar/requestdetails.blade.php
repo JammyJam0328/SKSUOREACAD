@@ -441,7 +441,7 @@
                                                 </div>
 
 
-                                                <div class="sm:col-span-2">
+                                                <div class="sm:col-span-1">
                                                     <dt class="text-sm font-medium text-gray-500">
                                                         Purpose
                                                     </dt>
@@ -452,6 +452,16 @@
                                                         @endif
                                                     </dd>
                                                 </div>
+                                                <div class="sm:col-span-1">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Request Code
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">
+                                                        {{ $request->request_code }}
+                                                    </dd>
+                                                </div>
+
+
                                             </dl>
 
                                         </div>
@@ -741,8 +751,9 @@
                                                         <button
                                                             wire:click.prevent="saveTotal({{ $document->id }},{{ $request->id }})"
                                                             class="p-1 shadow rounded-md bg-yellow-500 focus:outline-none text-white hover:bg-yellow-400"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                                viewBox="0 0 20 20" fill="currentColor">
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                class="h-5 w-5" viewBox="0 0 20 20"
+                                                                fill="currentColor">
                                                                 <path fill-rule="evenodd"
                                                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                                                     clip-rule="evenodd" />
