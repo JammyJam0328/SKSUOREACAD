@@ -266,6 +266,10 @@
 
 
                         </ul>
+                        <hr>
+                        <div class="py-2 px-5">
+                            {{ $requests->links() }}
+                        </div>
                     </div>
                 </div>
 

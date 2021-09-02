@@ -13,6 +13,7 @@ use App\Models\Purpose;
 use App\Models\Request;
 use Illuminate\Database\Eloquent\Builder;
 
+use Livewire\WithPagination;
 class Dashboard extends Component
 {
     public $search="";
@@ -23,13 +24,15 @@ class Dashboard extends Component
 
 
     public $mycampus;
+
+    use WithPagination;
     protected function getListeners()
     {
         return [
             "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
         ];
     }
- public function notify()
+    public function notify()
     {
         $this->emit('notify');
     }
@@ -37,6 +40,7 @@ class Dashboard extends Component
   
     public function render()
     {
+
        
         if($this->search){
             $this->requestors=Information::whereHas('course', function (Builder $query) {
@@ -55,7 +59,7 @@ class Dashboard extends Component
                             })->count();
   
         return view('livewire.registrar.dashboard',[
-            'requests'=>Request::where('campus_id',$this->mycampus)->where('status','Pending')->orderBy('created_at','DESC')->get()
+            'requests'=>Request::where('campus_id', auth()->user()->campus_id)->where('status','Pending')->orderBy('created_at','DESC')->paginate(20)
         ]);
     }
 
