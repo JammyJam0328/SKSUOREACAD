@@ -261,11 +261,13 @@
                                 </div>
                                 <div>
                                     <label for="total_amount">Documentary stamp</label>
-                                    <div class="flex items-center space-x-4">
+                                    <div class="grid items-center space-x-4">
                                         <input wire:model="documentary_stamp" type="number" name="documentary_stamp"
                                             id="documentary_stamp"
                                             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-
+                                        @error('documentary_stamp')
+                                            <span class="text-red-600">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 

@@ -35,10 +35,7 @@ class Request extends Component
     public $PaymentReviewRequest;
 
     protected $listeners = [
-        'readyToClaim',
-        'cancelRTC',
-        'confirmDeny',
-        'cancelDeny'
+       
     ];
 
     use WithPagination;
@@ -47,7 +44,11 @@ class Request extends Component
       protected function getListeners()
     {
         return [
-            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify',
+             'readyToClaim',
+        'cancelRTC',
+        'confirmDeny',
+        'cancelDeny'
         ];
     }
  public function notify()
@@ -89,7 +90,7 @@ class Request extends Component
     public function confirmRTC($id)
     {
         $this->request_id=$id;
-        $this->confirm('Do you want to continue?', [
+          $this->confirm('Do you want to continue?', [
             'position' =>  'center', 
             'toast' =>  true, 
             'confirmButtonText' =>  'Ok', 
@@ -97,12 +98,12 @@ class Request extends Component
             'showConfirmButton' =>  true, 
             'onConfirmed' => 'readyToClaim',
             'onCancelled' => 'cancelRTC'
-      ]);       
+      ]);     
     }
 
     public function readyToClaim()
     {
-        // dd($this->retrieval_date);
+       
         $todayDate = date('Y-m-d');
         $this->validate([
             'retrieval_date'=>'required|date_format:Y-m-d|after_or_equal:'.$todayDate,
@@ -171,10 +172,7 @@ class Request extends Component
 
     public function cancelDeny()
     {
-       
             $this->paymentReview=false;
-          
-      
     }
 
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Registrar;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
+
 use App\Events\RequestorEvent;
 use App\Models\User;
 use App\Models\Information;
@@ -21,9 +22,21 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\GmailSending;
-class Requestdetails extends Component
+class Test extends Component
 {
-    public $deny_id;
+    public function render()
+    {
+         $this->request=Request::where('id',$this->request_id)->first();
+        $this->total_amount=$this->request->documents()->sum('total_amount');
+        return view('livewire.test');
+    }
+
+    protected $listeners = [
+    'confirmed',
+    'cancelled',
+];
+
+  public $deny_id;
     public $request_id;
     public $page_count;
     public $request;
@@ -38,14 +51,11 @@ class Requestdetails extends Component
 
     public $documentary_stamp;
 
-  
 
       protected function getListeners()
     {
         return [
-            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify',
-                'confirmed',
-            'cancelled',
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
         ];
     }
  public function notify()
@@ -53,12 +63,6 @@ class Requestdetails extends Component
         $this->emit('notify');
     }
 
-    public function render()
-    {
-        $this->request=Request::where('id',$this->request_id)->first();
-        $this->total_amount=$this->request->documents()->sum('total_amount');
-        return view('livewire.registrar.requestdetails');
-    }
     public function mount($id)
     {
         $this->request_id=$id;
@@ -181,26 +185,30 @@ class Requestdetails extends Component
 
     public function confirmed()
     {
-        $request=Request::where('id',$this->deny_id)->first();
-            $request->update([
-                'status'=>'Denied',
-                'response'=>$this->response,
-            ]);
+        $this->alert(
+        'success',
+        'Thanks! consider giving it a star on github.'
+    );
+        // $request=Request::where('id',$this->deny_id)->first();
+        //     $request->update([
+        //         'status'=>'Denied',
+        //         'response'=>$this->response,
+        //     ]);
 
-            $emailDetails=[
-                'request_id'=>$request->id,
-                'name'=>$request->information->firstname,
-                'status'=>'Denied',
-                'message'=>'',
-            ];
+        //     $emailDetails=[
+        //         'request_id'=>$request->id,
+        //         'name'=>$request->information->firstname,
+        //         'status'=>'Denied',
+        //         'message'=>'',
+        //     ];
 
-            Mail::to($request->information->email)->send(new GmailSending($emailDetails));
-            event(new RequestorEvent($request->information->user->id));
-             Notification::create([
-                'message'=>"Your request has been denied",
-                'user_id'=>$request->information->user->id,
-            ]);
-            return redirect()->route('registrar-dashboard');
+        //     Mail::to($request->information->email)->send(new GmailSending($emailDetails));
+        //     event(new RequestorEvent($request->information->user->id));
+        //      Notification::create([
+        //         'message'=>"Your request has been denied",
+        //         'user_id'=>$request->information->user->id,
+        //     ]);
+        //     return redirect()->route('registrar-dashboard');
       
     }
 
@@ -208,5 +216,4 @@ class Requestdetails extends Component
     {
         $this->alert('info', 'Cancelled');
     }
-
 }

@@ -67,114 +67,135 @@
                                     <path
                                         d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                                 </svg>
-                                <span class="">Dashboard</span>
+                                <span
+                                    class="">Dashboard</span>
                             </a>
-                            <a href="{{ route('registrar-request') }}"
-                                class="menu-button {{ Request::routeIs('registrar-request') ? 'bg-green-700 text-white ' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
-                                <span class="">Requests</span>
-                            </a>
-                            @if (auth()->user()->campus_id == 1)
-                                <a href="{{ route('registrar-graduated') }}"
-                                    class="menu-button {{ Request::routeIs('registrar-graduated') ? 'bg-green-700 text-white' : 'text-primary' }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                            <a href="
+                                    {{ route('registrar-request') }}"
+                                    class="menu-button {{ Request::routeIs('registrar-request') ? 'bg-green-700 text-white ' : 'text-primary' }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
-                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                     </svg>
-                                    <span class="">Graduates</span>
+                                    <span
+                                        class="">Requests</span>
+                            </a>
+                            @if (auth()->user()->campus_id == 1)
+                                <a href="
+                                        {{ route('registrar-graduated') }}"
+                                        class="menu-button {{ Request::routeIs('registrar-graduated') ? 'bg-green-700 text-white' : 'text-primary' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path
+                                                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                        </svg>
+                                        <span
+                                            class="">Graduates</span>
                                 </a>
                             @endif
-                            <a href="{{ route('registrar-document') }}"
-                                class="menu-button {{ Request::routeIs('registrar-document') ? 'bg-green-700 text-white' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                                        clip-rule="evenodd" />
-                                    <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
-                                </svg>
-                                <span class="">Documents</span>
+                            <a href="
+                                            {{ route('registrar-document') }}"
+                                            class="menu-button {{ Request::routeIs('registrar-document') ? 'bg-green-700 text-white' : 'text-primary' }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                                                    clip-rule="evenodd" />
+                                                <path
+                                                    d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
+                                            </svg>
+                                            <span
+                                                class="">Documents</span>
                             </a>
 
                         </nav>
                 </div>
             </div>
 
-            <div class="flex-shrink-0 w-14" aria-hidden="true">
-                <!-- Dummy element to force sidebar to shrink to fit close icon -->
+            <div class="
+                                                flex-shrink-0 w-14" aria-hidden="true">
+                                                <!-- Dummy element to force sidebar to shrink to fit close icon -->
+                </div>
             </div>
-        </div>
 
-        <!-- Static sidebar for desktop -->
-        <div x-show="sideBarMD" x-transition:enter="transition ease-in-out duration-300 transform"
-            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
-            x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="-translate-x-full" class="hidden md:flex md:flex-shrink-0">
-            <div class="flex flex-col w-64">
-                <!-- Sidebar component, swap this element with another sidebar if you like -->
-                <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
-                    <div class="flex-shrink-0  flex items-center justify-center px-4">
-                        <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}" alt="SKSU OREACAD">
-                    </div>
-                    <div class="mt-5 flex-grow flex flex-col">
-                        <nav class="flex-1 px-2 bg-white space-y-1">
-                            <a href="{{ route('registrar-dashboard') }}"
-                                class="menu-button {{ Request::routeIs('registrar-dashboard') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                                </svg>
-                                <span class="">Dashboard</span>
-                            </a>
-                            <a href="{{ route('registrar-request') }}"
-                                class="menu-button {{ Request::routeIs('registrar-request') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
-                                <span class="">Requests</span>
-                            </a>
-                            @if (auth()->user()->campus_id == 1)
-                                <a href="{{ route('registrar-graduated') }}"
-                                    class="menu-button {{ Request::routeIs('registrar-graduated') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+            <!-- Static sidebar for desktop -->
+            <div x-show="sideBarMD" x-transition:enter="transition ease-in-out duration-300 transform"
+                x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in-out duration-300 transform"
+                x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+                class="hidden md:flex md:flex-shrink-0">
+                <div class="flex flex-col w-64">
+                    <!-- Sidebar component, swap this element with another sidebar if you like -->
+                    <div class="flex flex-col flex-grow border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto">
+                        <div class="flex-shrink-0  flex items-center justify-center px-4">
+                            <img class="h-20 w-auto" src="{{ asset('images/OREACADLogo1.png') }}"
+                                alt="SKSU OREACAD">
+                        </div>
+                        <div class="mt-5 flex-grow flex flex-col">
+                            <nav class="flex-1 px-2 bg-white space-y-1">
+                                <a href="{{ route('registrar-dashboard') }}"
+                                    class="menu-button {{ Request::routeIs('registrar-dashboard') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path
-                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                                     </svg>
-                                    <span class="flex space-x-5 items-center justify-between"><span>Graduates</span>
-                                        <span>@livewire('registrar.graduate-count')</span></span>
+                                    <span
+                                        class="">Dashboard</span>
+                            </a>
+                            <a href="
+                                        {{ route('registrar-request') }}"
+                                        class="menu-button {{ Request::routeIs('registrar-request') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path
+                                                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                        <span
+                                            class="">Requests</span>
+                            </a>
+                            @if (auth()->user()->campus_id == 1)
+                                <a href="
+                                            {{ route('registrar-graduated') }}"
+                                            class="menu-button {{ Request::routeIs('registrar-graduated') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path
+                                                    d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                            </svg>
+                                            <span
+                                                class="flex space-x-5 items-center justify-between"><span>Graduates</span>
+                                                <span>@livewire('registrar.graduate-count')</span></span>
 
                                 </a>
-                            @endif
-                            <a href="{{ route('registrar-document') }}"
-                                class="menu-button {{ Request::routeIs('registrar-document') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                                        clip-rule="evenodd" />
-                                    <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
-                                </svg>
-                                <span class="">Documents</span>
+                                @endif
+                                <a href="{{ route('registrar-document') }}"
+                                    class="menu-button {{ Request::routeIs('registrar-document') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                                            clip-rule="evenodd" />
+                                        <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
+                                    </svg>
+                                    <span
+                                        class="">Documents</span>
                             </a>
 
-                            <a href="{{ route('registrar-reports') }}"
-                                class="menu-button {{ Request::routeIs('registrar-reports') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="">Reports</span>
+                            <a href="
+                                        {{ route('registrar-reports') }}"
+                                        class="menu-button {{ Request::routeIs('registrar-reports') ? ' bg-gradient-to-r from-green-500 to-green-700 text-white' : 'text-primary' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        <span
+                                            class="">Reports</span>
                             </a>
 
                         </nav>
@@ -183,160 +204,169 @@
             </div>
 
         </div>
-        <div class="flex flex-col w-0 flex-1 overflow-hidden">
-            <div class="relative z-10 flex-shrink-0 flex h-12  bg-gradient-to-r from-green-500 to-green-700 shadow">
-                <button x-on:click="sideBar=true"
-                    class="px-4 border-r border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 md:hidden">
-                    <span class="sr-only">Open sidebar</span>
-                    <!-- Heroicon name: outline/menu-alt-2 -->
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h7" />
-                    </svg>
-                </button>
-                <button x-on:click="sideBarMD=!sideBarMD"
-                    class="px-4 border-r border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 hidden md:block">
-                    <span class="sr-only">Open sidebar</span>
-                    <!-- Heroicon name: outline/menu-alt-2 -->
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h7" />
-                    </svg>
-                </button>
-                <div class="flex-1 px-4 flex justify-between">
-                    <div class="flex-1 flex">
+        <div class="
+                                            flex flex-col w-0 flex-1 overflow-hidden">
+                                            <div
+                                                class="relative z-10 flex-shrink-0 flex h-12  bg-gradient-to-r from-green-500 to-green-700 shadow">
+                                                <button x-on:click="sideBar=true"
+                                                    class="px-4 border-r border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 md:hidden">
+                                                    <span class="sr-only">Open sidebar</span>
+                                                    <!-- Heroicon name: outline/menu-alt-2 -->
+                                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                                                    </svg>
+                                                </button>
+                                                <button x-on:click="sideBarMD=!sideBarMD"
+                                                    class="px-4 border-r border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 hidden md:block">
+                                                    <span class="sr-only">Open sidebar</span>
+                                                    <!-- Heroicon name: outline/menu-alt-2 -->
+                                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                                                    </svg>
+                                                </button>
+                                                <div class="flex-1 px-4 flex justify-between">
+                                                    <div class="flex-1 flex">
 
-                    </div>
-                    <div class="ml-4 flex items-center md:ml-6">
+                                                    </div>
+                                                    <div class="ml-4 flex items-center md:ml-6">
 
 
-                        <!-- Profile dropdown -->
-                        <div class="ml-3 relative">
-                            <div>
-                                <button x-on:click="userMenu=!userMenu" x-on:click.away="userMenu=false" type="button"
-                                    class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="sr-only">Open user menu</span>
-                                    <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}"
-                                        alt="">
-                                </button>
-                            </div>
+                                                        <!-- Profile dropdown -->
+                                                        <div class="ml-3 relative">
+                                                            <div>
+                                                                <button x-on:click="userMenu=!userMenu"
+                                                                    x-on:click.away="userMenu=false" type="button"
+                                                                    class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                                    id="user-menu-button" aria-expanded="false"
+                                                                    aria-haspopup="true">
+                                                                    <span class="sr-only">Open user menu</span>
+                                                                    <img class="h-8 w-8 rounded-full"
+                                                                        src="{{ auth()->user()->profile_photo_url }}"
+                                                                        alt="">
+                                                                </button>
+                                                            </div>
 
-                            <div x-cloak x-show="userMenu"
-                                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
-                                tabindex="-1">
-                                <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                                    :active="request()->routeIs('profile.show')">
-                                    {{ __('Account setting') }}
-                                </x-jet-responsive-nav-link>
-                                <hr>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                            <div x-cloak x-show="userMenu"
+                                                                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                                                role="menu" aria-orientation="vertical"
+                                                                aria-labelledby="user-menu-button" tabindex="-1">
+                                                                <!-- Active: "bg-gray-100", Not Active: "" -->
+                                                                <x-jet-responsive-nav-link
+                                                                    href="{{ route('profile.show') }}"
+                                                                    :active="request()->routeIs('profile.show')">
+                                                                    {{ __('Account setting') }}
+                                                                </x-jet-responsive-nav-link>
+                                                                <hr>
+                                                                <form method="POST" action="{{ route('logout') }}">
+                                                                    @csrf
+                                                                    <x-jet-responsive-nav-link
+                                                                        href="{{ route('logout') }}" onclick="event.preventDefault();
                                   this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-jet-responsive-nav-link>
-                                </form>
-                            </div>
+                                                                        {{ __('Log Out') }}
+                                                                    </x-jet-responsive-nav-link>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <main class="flex-1 relative overflow-y-auto focus:outline-none">
+                                                <div class="py-6">
+                                                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-4">
+                                                        <!-- Replace with your content -->
+
+                                                        @yield('content')
+                                                        <!-- /End replace -->
+                                                    </div>
+                                                </div>
+                                            </main>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <main class="flex-1 relative overflow-y-auto focus:outline-none">
-                <div class="py-6">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-4">
-                        <!-- Replace with your content -->
-
-                        @yield('content')
-                        <!-- /End replace -->
+                    <div id="page-preloader"
+                        class="grid items-center justify-center  w-full h-full fixed top-0 left-0 bg-green-700 z-50">
+                        <span class="grid items-center justify-center animate-bounce ">
+                            <img src="{{ asset('images/loading.svg') }}" class="h-52 w-52" alt="">
+                            <h1 class="text-center text-white font-bold text-2xl">Loading . . . </h1>
+                        </span>
                     </div>
-                </div>
-            </main>
-        </div>
-    </div>
+                    <audio id="sound" src="{{ asset('sound/notification.mp3') }}" style="display: none"></audio>
 
-    <div id="page-preloader"
-        class="grid items-center justify-center  w-full h-full fixed top-0 left-0 bg-green-700 z-50">
-        <span class="grid items-center justify-center animate-bounce ">
-            <img src="{{ asset('images/loading.svg') }}" class="h-52 w-52" alt="">
-            <h1 class="text-center text-white font-bold text-2xl">Loading . . . </h1>
-        </span>
-    </div>
-    <audio id="sound" src="{{ asset('sound/notification.mp3') }}" style="display: none"></audio>
+                    @livewireScripts
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+                    </script>
 
-    @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-    </script>
+                    <x-livewire-alert::scripts />
 
-    <x-livewire-alert::scripts />
+                    <script>
+                        window.addEventListener('DOMContentLoaded', (event) => {
+                            document.getElementById('page-preloader').style.display = "none";
+                        });
+                        window.addEventListener('beforeunload', (event) => {
+                            document.getElementById('page-preloader').style.display = "flex";
+                        });
 
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            document.getElementById('page-preloader').style.display = "none";
-        });
-        window.addEventListener('beforeunload', (event) => {
-            document.getElementById('page-preloader').style.display = "flex";
-        });
+                        window.addEventListener('DOMContentLoaded', (event) => {
+                            document.getElementById('page-preloader').style.display = "none";
 
-        window.addEventListener('DOMContentLoaded', (event) => {
-            document.getElementById('page-preloader').style.display = "none";
-
-            function showNotification() {
-                const notification = new Notification("New request received !");
-            };
+                            function showNotification() {
+                                const notification = new Notification("New request received !");
+                            };
 
 
-            window.Livewire.on('notify', () => {
+                            window.Livewire.on('notify', () => {
 
 
 
-                if (Notification.permission === "granted") {
+                                if (Notification.permission === "granted") {
 
-                    showNotification();
+                                    showNotification();
 
-                } else if (Notification.permission !== "denied") {
+                                } else if (Notification.permission !== "denied") {
 
-                    Notification.requestPermission().then(permission => {
-                        if (permission === "granted") {
-                            showNotification();
-                        }
-                    });
+                                    Notification.requestPermission().then(permission => {
+                                        if (permission === "granted") {
+                                            showNotification();
+                                        }
+                                    });
 
-                } else {
+                                } else {
 
-                    Notification.requestPermission();
+                                    Notification.requestPermission();
 
-                };
-            });
-            window.Livewire.on('notifygrad', () => {
+                                };
+                            });
+                            window.Livewire.on('notifygrad', () => {
 
 
 
-                if (Notification.permission === "granted") {
+                                if (Notification.permission === "granted") {
 
-                    new Notification("New request received from graduated student !")
+                                    new Notification("New request received from graduated student !")
 
-                } else if (Notification.permission !== "denied") {
+                                } else if (Notification.permission !== "denied") {
 
-                    Notification.requestPermission().then(permission => {
-                        if (permission === "granted") {
-                            new Notification("New request received from graduated student !");
-                        }
-                    });
+                                    Notification.requestPermission().then(permission => {
+                                        if (permission === "granted") {
+                                            new Notification("New request received from graduated student !");
+                                        }
+                                    });
 
-                } else {
+                                } else {
 
-                    Notification.requestPermission();
+                                    Notification.requestPermission();
 
-                };
-            });
-        });
-    </script>
+                                };
+                            });
+                        });
+                    </script>
 </body>
 
 </html>

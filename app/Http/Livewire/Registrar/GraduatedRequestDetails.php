@@ -39,15 +39,14 @@ class GraduatedRequestDetails extends Component
     public $TOR_ID="5";
 
 
-    protected $listeners = [
-        'confirmed',
-        'cancelled',
-    ];
+  
 
       protected function getListeners()
     {
         return [
-            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
+            "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify',
+              'confirmed',
+        'cancelled',
         ];
     }
  public function notify()
@@ -168,6 +167,10 @@ class GraduatedRequestDetails extends Component
 
     public function approvedRequest($id)
     {
+        
+        $this->validate([
+            'documentary_stamp'=>'gt:0|nullable'
+        ]);
         $request=Request::where('id',$id)->first();
         //Request document must have amount unless don't approved
         $check = $request->documents()->where('request_documents.total_amount','0')->count();

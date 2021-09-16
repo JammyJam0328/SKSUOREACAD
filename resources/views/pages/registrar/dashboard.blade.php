@@ -3,6 +3,5 @@
     Dashboard
 @endsection
 @section('content')
-
     @livewire('registrar.dashboard')
 @endsection
