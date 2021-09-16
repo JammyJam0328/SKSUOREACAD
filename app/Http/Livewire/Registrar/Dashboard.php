@@ -41,6 +41,7 @@ class Dashboard extends Component
     public function render()
     {
 
+        $this->mycampus=auth()->user()->campus_id;
        
         if($this->search){
             $this->requestors=Information::whereHas('course', function (Builder $query) {

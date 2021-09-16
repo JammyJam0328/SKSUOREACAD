@@ -19,7 +19,6 @@ class Registrar
         if(!Auth()->user()){
             return redirect()->route('login');
         }
-
         if(Auth()->user()->role=="registrar"){
             return $next($request);
         }else{
