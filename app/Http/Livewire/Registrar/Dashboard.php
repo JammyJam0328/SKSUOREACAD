@@ -22,7 +22,7 @@ class Dashboard extends Component
     public $countUnread;
     public $countToReview;
 
-
+    public $customDate;
     public $mycampus;
 
     use WithPagination;
@@ -63,6 +63,25 @@ class Dashboard extends Component
             'requests'=>Request::where('campus_id', auth()->user()->campus_id)->where('status','Pending')->orderBy('created_at','DESC')->paginate(20)
         ]);
     }
+
+
+    public function printToday()
+    {
+        $date = date('Y-m-d');
+        return redirect()->route('print-stub',[
+            'date'=>$date,
+        ]);
+    }
+
+    public function customDatePrint()
+    {
+        if($this->customDate){
+        return redirect()->route('print-stub',[
+                    'date'=>$this->customDate,
+        ]);
+        }
+    }
+        
 
 
     

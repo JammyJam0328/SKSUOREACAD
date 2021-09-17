@@ -13,6 +13,8 @@ use App\Models\Purpose;
 use App\Models\Request;
 use App\Models\Transaction;
 
+
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use Illuminate\Database\Eloquent\Builder;
 class Dashboard extends Component
 {
@@ -24,6 +26,7 @@ class Dashboard extends Component
     public $requestCount;
 
 
+  
 
 
 
@@ -31,6 +34,7 @@ class Dashboard extends Component
 
     public function render()
     {
+       
         return view('livewire.admin.dashboard');
     }
     public function mount()

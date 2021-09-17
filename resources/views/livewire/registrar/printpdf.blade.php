@@ -1,15 +1,15 @@
 <div class="flex flex-col">
     <div class="flex items-center justify-center space-x-3">
         <div class="">
-            <img src="{{ asset('images/sksu1.png') }}" class="h-16 w-16" alt="">
+            <img src=" {{ asset('images/sksu1.png') }}" class="h-16 w-16" alt="">
         </div>
         <div class="grid items-center justify-center">
-            <h1 class="text-lg text-center">SULTAN KUDARAT STATUS UNIVERSITY</h1>
+            <h1 class="text-lg text-center">SULTAN KUDARAT STATES UNIVERSITY</h1>
             <h1 class="text-center">Online Request of Academic Documents</h1>
             <h1 class="text-sm text-center">{{ auth()->user()->campus->name }}</h1>
         </div>
         <div class="">
-            <img src="{{ asset('images/OREACADLogo.svg') }}" class="h-24 w-24" alt="">
+            <img src=" {{ asset('images/OREACADLogo.svg') }}" class="h-24 w-24" alt="">
         </div>
     </div>
     <div>
@@ -122,5 +122,4 @@
 
 
     </div>
-</div>
 </div>

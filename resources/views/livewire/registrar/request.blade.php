@@ -846,17 +846,35 @@
                                     <!-- Description list-->
                                     <section aria-labelledby="applicant-information-title">
                                         <div class="bg-white border-t-2 border-blue-600 shadow sm:rounded-lg">
-                                            <div class="py-2 px-5 border-b border-gray-300">
-                                                More Information
+                                            <div class="grid py-2 px-5 border-b border-gray-300">
+                                                <span> More Information</span>
+                                                <span class="text-xs text-gray-500">Note: Put the REQUEST CODE &
+                                                    RECEIVER NAME on the stub</span>
                                             </div>
                                             <div class=" px-4 py-5 sm:px-6">
                                                 <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                                                    <div class="sm:col-span-1">
+                                                        <dt class="text-sm font-medium text-gray-500">
+                                                            Request Code
+                                                        </dt>
+                                                        <dd class="mt-1 text-sm text-gray-900">
+                                                            {{ $PaymentReviewRequest->request_code }}
+                                                        </dd>
+                                                    </div>
                                                     <div class="sm:col-span-1">
                                                         <dt class="text-sm font-medium text-gray-500">
                                                             Status
                                                         </dt>
                                                         <dd class="mt-1 text-sm text-gray-900">
                                                             {{ $PaymentReviewRequest->information->status }}
+                                                        </dd>
+                                                    </div>
+                                                    <div class="sm:col-span-1">
+                                                        <dt class="text-sm font-medium text-gray-500">
+                                                            Expected Reciever
+                                                        </dt>
+                                                        <dd class="mt-1 text-sm text-gray-900">
+                                                            {{ $PaymentReviewRequest->receivername }}
                                                         </dd>
                                                     </div>
                                                     <div class="sm:col-span-1">
@@ -956,12 +974,16 @@
 
                                             </ul>
                                             <div class="border-t border-b border-gray-200 py-5">
-                                                Total Amount to Pay : &#8369;
+                                                Total Amount of Documents : &#8369;
                                                 {{ $PaymentReviewRequest->transaction->amount }}
                                             </div>
                                             <div class="border-t border-b border-gray-200 py-5">
                                                 Documentary stamp : &#8369;
                                                 {{ $PaymentReviewRequest->transaction->documentary_stamp }}
+                                            </div>
+                                            <div class="border-t border-b border-gray-200 py-5">
+                                                Expect amount to recieve : &#8369;
+                                                {{ $PaymentReviewRequest->transaction->documentary_stamp + $PaymentReviewRequest->transaction->amount }}
                                             </div>
                                             <div class="py-3">
                                                 <form>

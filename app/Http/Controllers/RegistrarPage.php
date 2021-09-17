@@ -109,4 +109,14 @@ class RegistrarPage extends Controller
             'endDate'=>$endDate,
         ]);
     }
+
+    public function printStub(Request $request)
+    {
+        if(!$request->date){
+            abort(404);
+        }
+        return view('pages.registrar.claimstubs',[
+            'date'=>$request->date,
+        ]);
+    }
 }

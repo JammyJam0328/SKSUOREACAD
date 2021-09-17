@@ -46,12 +46,12 @@ class Request extends Component
         return [
             "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify',
              'readyToClaim',
-        'cancelRTC',
-        'confirmDeny',
-        'cancelDeny'
-        ];
+            'cancelRTC',
+            'confirmDeny',
+            'cancelDeny'
+            ];
     }
- public function notify()
+     public function notify()
     {
         $this->emit('notify');
     }
@@ -74,6 +74,7 @@ class Request extends Component
                             $q->where('lastname','like','%'.$this->search.'%');
                         })
                         ->orWhere('request_code',$this->search)
+                        ->orderBy('created_at','DESC')
                         ->paginate(10)
         
         ]);

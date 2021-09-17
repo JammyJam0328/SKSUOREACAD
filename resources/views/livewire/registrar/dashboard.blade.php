@@ -132,13 +132,39 @@
                     </div>
                 </div>
 
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
 
-
-
+                            <div class="ml-2 w-0 flex-1">
+                                <h1> Ready to Claim </h1>
+                                <hr>
+                                <div class="pt-2 space-y-2  ">
+                                    <button wire:click.prevent="printToday" type=" button"
+                                        class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Print all for today
+                                    </button>
+                                    <h1 class="text-sm">OR</h1>
+                                    <div class="flex space-x-2 items-center">
+                                        <div class="mt-1">
+                                            <input wire:model.defer="customDate" type="date" name="date" id="date"
+                                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <button wire:click.prevent="customDatePrint" type="button"
+                                            class="inline-flex mt-1 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Print
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
         <hr>
+
         <div class="py-4 ">
             <div class="grid">
 

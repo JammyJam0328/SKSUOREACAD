@@ -1,4 +1,4 @@
-<div x-data="{denyModal:@entangle('denyModal')}">
+<div>
 
     <main class="flex-1 relative overflow-y-auto focus:outline-none">
         <div class="py-8 xl:py-10">

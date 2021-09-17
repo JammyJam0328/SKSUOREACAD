@@ -31,12 +31,14 @@ class Reports extends Component
             "echo-private:new-request.".auth()->user()->campus_id.",NewRequest" => 'notify'
         ];
     }
- public function notify()
+    public function notify()
     {
         $this->emit('notify');
     }
+
     public function render()
     {
+
         return view('livewire.registrar.reports',[
             'requests'=>Request::where('campus_id',auth()->user()->campus_id)->where('status','like','%'.$this->status.'%')
                     ->whereBetween('created_at', [$this->startDate, $this->endDate])->get()     
@@ -49,6 +51,8 @@ class Reports extends Component
         // $this->monthSelect = date('m');
         
     }
+
+   
     public function printPDF()
     {
         if ($this->startDate!=""&&$this->endDate!="") {
@@ -63,4 +67,6 @@ class Reports extends Component
         }
      
     }
+
+
 }

@@ -27,7 +27,7 @@ class CampusCourseRegistrarSeeder extends Seeder
             "role" => "admin",
             "name" => "Administrator",
             "password" => Hash::make("adminsksyou123"),
-            "email" => "oreacadadmin@gmail.com",
+            "email" => "sksuoroad@sksu.edu.ph",
         ]);
 
       
