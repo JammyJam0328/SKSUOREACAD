@@ -300,6 +300,8 @@
                     <audio id="sound" src="{{ asset('sound/notification.mp3') }}" style="display: none"></audio>
 
                     @livewireScripts
+                    @livewireChartsScripts
+                    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
                     </script>
 
@@ -367,6 +369,7 @@
                             });
                         });
                     </script>
+                    @yield('script')
 </body>
 
 </html>

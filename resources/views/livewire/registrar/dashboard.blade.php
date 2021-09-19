@@ -140,10 +140,14 @@
                                 <h1> Ready to Claim </h1>
                                 <hr>
                                 <div class="pt-2 space-y-2  ">
-                                    <button wire:click.prevent="printToday" type=" button"
-                                        class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Print all for today
-                                    </button>
+                                    <div class="flex space-x-2 items-center">
+                                        <button wire:click.prevent="printToday" type=" button"
+                                            class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Print all for today
+                                        </button>
+                                        <span
+                                            class="py-1 px-2 rounded-full bg-green-100 text-green-600">{{ $readyToClaim }}</span>
+                                    </div>
                                     <h1 class="text-sm">OR</h1>
                                     <div class="flex space-x-2 items-center">
                                         <div class="mt-1">
@@ -301,6 +305,18 @@
 
             </div>
         </div>
+    </div>
+    <div class="mt-4">
+        <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Request Status Chart
+            </h3>
+        </div>
+        <div class="h-96 bg-white p-4 mt-2 shadow-md rounded-md">
+            <livewire:livewire-column-chart :column-chart-model="$columnChartModel1" />
+
+        </div>
+
     </div>
     {{-- <div class="w-1/3">
         <div class="bg-white rounded shadow border-t-4 border-green-600 pt-1">

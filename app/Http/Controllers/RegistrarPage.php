@@ -6,11 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Request as RequestModel;
 use App\Models\Information;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+
 class RegistrarPage extends Controller
 {
     public function dashboard()
     {
-        $this->pageName="Dashboard";
+        
+         $chart_options= [
+            'chart_title' => 'Request',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Request',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'line',
+             'conditions'            => [
+                 
+            ['name' => 'Pending', 'condition' => 'status = "Pending"', 'condition' => 'campus_id = '.auth()->user()->campus_id.'', 'color' => 'black', 'fill' => true],
+            // ['name' => 'Aprroved', 'condition' => 'status = "Approved"', 'color' => 'blue', 'fill' => true],
+            // ['name' => 'Claimed', 'condition' => 'status = "Claimed"', 'color' => 'green', 'fill' => true],
+         ],
+
+             
+        ];
+        $chart1 = new LaravelChart($chart_options);
         return view('pages.registrar.dashboard');
         
     }

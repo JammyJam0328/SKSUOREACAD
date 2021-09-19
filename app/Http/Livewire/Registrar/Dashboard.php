@@ -12,6 +12,7 @@ use App\Models\DocumentCategory;
 use App\Models\Purpose;
 use App\Models\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 
 use Livewire\WithPagination;
 class Dashboard extends Component
@@ -21,6 +22,8 @@ class Dashboard extends Component
     public $countPending;
     public $countUnread;
     public $countToReview;
+    public $readyToClaim;
+
 
     public $customDate;
     public $mycampus;
@@ -41,6 +44,20 @@ class Dashboard extends Component
     public function render()
     {
 
+        $pendingAll =  Request::where('status','Pending')->where('campus_id',auth()->user()->campus_id)->count();
+        $claimAll =  Request::where('status','Claimed')->where('campus_id',auth()->user()->campus_id)->count();
+        $approvedAll =  Request::where('status','Approved')->where('campus_id',auth()->user()->campus_id)->count();
+
+          $columnChartModel1 = 
+                        (new ColumnChartModel())
+                            ->setTitle('Request Chart')
+                            ->addColumn('Pending', $pendingAll, '#f6ad55')
+                            ->addColumn('Approved', $approvedAll, '#0aab78')
+                            ->addColumn('Claimed', $claimAll, '#90cdf4')
+                        ;
+                        
+            
+
         $this->mycampus=auth()->user()->campus_id;
        
         if($this->search){
@@ -58,9 +75,14 @@ class Dashboard extends Component
                             ->whereHas('information', function (Builder $query) {
                                 $query->where('status', 'Ongoing')->orWhere('status','Not Graduated');
                             })->count();
-  
+          $this->readyToClaim=Request::where('status','Ready To Claim')->where('campus_id',$this->mycampus)
+                            ->whereHas('transaction', function (Builder $query) {
+                                $query->where('retrieval_date',  date('Y-m-d'));
+                            })->count();
+                            
         return view('livewire.registrar.dashboard',[
-            'requests'=>Request::where('campus_id', auth()->user()->campus_id)->where('status','Pending')->orderBy('created_at','DESC')->paginate(20)
+            'requests'=>Request::where('campus_id', auth()->user()->campus_id)->where('status','Pending')->orderBy('created_at','DESC')->paginate(10),
+            'columnChartModel1'=>$columnChartModel1
         ]);
     }
 
